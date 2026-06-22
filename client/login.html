@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Client Sign In — AMH Solutions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="/admin/admin.css" />
+</head>
+<body class="auth-body">
+  <div class="auth-bg"></div>
+
+  <main class="auth-shell">
+    <a href="/" class="auth-back">← Back to site</a>
+
+    <div class="auth-card">
+      <div class="auth-card-logo">
+        <img src="/assets/amh-logo.svg" alt="AMH Solutions" />
+      </div>
+
+      <span class="kicker">// Client portal</span>
+      <h1>Welcome back</h1>
+      <p class="auth-sub">Sign in to see the status of your projects with AMH Solutions — in-progress milestones, deliverables and completed work.</p>
+
+      <form id="loginForm" class="auth-form">
+        <div class="field">
+          <label>Email</label>
+          <input type="email" name="email" placeholder="you@company.com" required autocomplete="email" autofocus />
+        </div>
+        <div class="field">
+          <label>Password</label>
+          <input type="password" name="password" placeholder="••••••••" required autocomplete="current-password" />
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Sign in <span>→</span></button>
+        <p class="auth-error" id="loginError"></p>
+      </form>
+
+      <p class="auth-hint">Need access? Email <a href="mailto:hello@amhsolutions.com">hello@amhsolutions.com</a>.<br />Demo: <code>demo@client.com</code> / <code>demo1234</code></p>
+    </div>
+  </main>
+
+  <script>
+    const form = document.getElementById('loginForm');
+    const err = document.getElementById('loginError');
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      err.textContent = '';
+      const data = new FormData(form);
+      try {
+        const res = await fetch('/client/login', { method: 'POST', body: data });
+        const json = await res.json();
+        if (!res.ok) { err.textContent = json.error || 'Could not sign in.'; return; }
+        window.location.href = json.redirect || '/client/dashboard.html';
+      } catch (e) {
+        err.innerHTML = 'Server unreachable. Make sure the AMH backend is running &mdash; double-click <code>start.command</code> in the project folder, then refresh this page.';
+      }
+    });
+  </script>
+</body>
+</html>

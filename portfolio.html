@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio — AMH Solutions</title>
+  <meta name="description" content="Selected work by AMH Solutions — full-stack websites, brand identities, and Meta Ads campaigns delivered for clients across travel, retail and lifestyle." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.158.0/three.min.js"></script>
+</head>
+<body>
+
+  <canvas id="bgcanvas"></canvas>
+  <div class="bg-grain" aria-hidden="true"></div>
+  <div class="bg-vignette" aria-hidden="true"></div>
+
+  <!-- ============ NAV ============ -->
+  <nav class="nav" id="nav">
+    <a href="index.html" class="logo">
+      <span class="logo-mark">
+        <img src="assets/amh-logo.svg" alt="AMH Solutions" />
+      </span>
+      <span class="logo-text">AMH<span>Solutions</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="services.html">Services</a></li>
+      <li><a href="portfolio.html" class="is-active">Portfolio</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-signin" id="navSignin">
+      <button class="nav-signin-btn" type="button" aria-haspopup="true" aria-expanded="false">
+        Sign in <span class="caret" aria-hidden="true">▾</span>
+      </button>
+      <div class="nav-signin-menu" role="menu">
+        <a href="/admin/login.html" role="menuitem">
+          <strong>Admin sign in</strong>
+          <span>Manage portfolio, clients &amp; projects</span>
+        </a>
+        <a href="/client/login.html" role="menuitem">
+          <strong>Client sign in</strong>
+          <span>View your projects &amp; deliverables</span>
+        </a>
+      </div>
+    </div>
+    <a href="contact.html" class="nav-cta">Start a project →</a>
+    <button class="nav-burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <section class="port-hero">
+    <div class="port-hero-inner">
+      <span class="kicker">// Portfolio</span>
+      <h1 class="port-hero-title">
+        Selected <span class="grad">work,</span><br />
+        shipped & <span class="grad-2">scaling.</span>
+      </h1>
+      <p class="port-hero-sub">
+        A close look at the websites, brands and Meta Ads campaigns we've built —
+        and the numbers they're putting up.
+      </p>
+      <div class="port-hero-stats">
+        <div><strong>3+</strong><span>Websites shipped</span></div>
+        <div><strong>4+</strong><span>Active Meta campaigns</span></div>
+        <div><strong>₹30k</strong><span>Profit · 7-day campaign</span></div>
+        <div><strong>7</strong><span>Service verticals</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WEBSITES ============ -->
+  <section class="section work" id="websites">
+    <div class="section-head">
+      <span class="kicker">// Websites</span>
+      <h2>Production sites,<br /><span class="grad">live in market.</span></h2>
+      <p>Each of these was designed, built and shipped end-to-end — from first wireframe to launched product.</p>
+    </div>
+
+    <div class="work-grid work-grid-2x2">
+      <a class="work-card" href="https://www.easytravel.co.tz/" target="_blank" rel="noopener noreferrer">
+        <div class="work-frame">
+          <div class="frame-bar">
+            <span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span>
+            <div class="frame-url">easytravel.co.tz</div>
+          </div>
+          <div class="frame-screen frame-travel">
+            <img loading="lazy" src="https://image.thum.io/get/width/1200/crop/800/https://www.easytravel.co.tz/" alt="Easy Travel — Tanzania safari & tourism" onerror="this.style.display='none'" />
+          </div>
+        </div>
+        <div class="work-meta">
+          <div class="work-tags"><span>Travel · Tourism</span><span>Web Development</span></div>
+          <h3>Easy Travel <span class="arrow">↗</span></h3>
+          <p>A premium safari & tourism platform for one of Tanzania's leading travel brands — built for discovery, designed for trust.</p>
+        </div>
+      </a>
+
+      <a class="work-card" href="https://petshopinpune.com/" target="_blank" rel="noopener noreferrer">
+        <div class="work-frame">
+          <div class="frame-bar">
+            <span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span>
+            <div class="frame-url">petshopinpune.com</div>
+          </div>
+          <div class="frame-screen frame-pet">
+            <img loading="lazy" src="https://image.thum.io/get/width/1200/crop/800/https://petshopinpune.com/" alt="Pet Shop in Pune — online pet supplies" onerror="this.style.display='none'" />
+          </div>
+        </div>
+        <div class="work-meta">
+          <div class="work-tags"><span>E-commerce</span><span>D2C · Pets</span></div>
+          <h3>Pet Shop in Pune <span class="arrow">↗</span></h3>
+          <p>A full e-commerce store for one of Pune's largest pet supply businesses — product catalogue, ordering and home delivery built end-to-end.</p>
+        </div>
+      </a>
+
+      <a class="work-card" href="https://get-nothin.com/" target="_blank" rel="noopener noreferrer">
+        <div class="work-frame">
+          <div class="frame-bar">
+            <span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span>
+            <div class="frame-url">get-nothin.com</div>
+          </div>
+          <div class="frame-screen frame-nothin">
+            <img loading="lazy" src="https://image.thum.io/get/width/1200/crop/800/https://get-nothin.com/" alt="Get Nothin — lifestyle D2C brand" onerror="this.style.display='none'" />
+          </div>
+        </div>
+        <div class="work-meta">
+          <div class="work-tags"><span>D2C Brand</span><span>Lifestyle · Retail</span></div>
+          <h3>Get Nothin <span class="arrow">↗</span></h3>
+          <p>A clean, modern storefront for a homegrown lifestyle label — built to convert browsers into buyers with a confident, minimal aesthetic.</p>
+        </div>
+      </a>
+
+      <a class="work-card" href="https://devantaexports.com/" target="_blank" rel="noopener noreferrer">
+        <div class="work-frame">
+          <div class="frame-bar">
+            <span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span>
+            <div class="frame-url">devantaexports.com</div>
+          </div>
+          <div class="frame-screen frame-devanta">
+            <img loading="lazy" src="https://image.thum.io/get/width/1200/crop/800/https://devantaexports.com/" alt="Devanta Exports — natural stone & granite exporter" onerror="this.style.display='none'" />
+          </div>
+        </div>
+        <div class="work-meta">
+          <div class="work-tags"><span>Export · Trade</span><span>Natural Stone</span></div>
+          <h3>Devanta Exports <span class="arrow">↗</span></h3>
+          <p>A premium marketing site for a global natural-stone exporter — animated hero, product catalogue, and buyer-grade compliance.</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ BRANDS WALL ============ -->
+  <section class="section brands">
+    <div class="section-head">
+      <span class="kicker">// Brands we've worked with</span>
+      <h2>28+ businesses,<br /><span class="grad">one team behind them.</span></h2>
+      <p>Real estate, wellness, hospitality, exports, fashion, fintech — we've designed, branded and run campaigns for businesses across every kind of market.</p>
+    </div>
+
+    <div class="brands-grid brands-logo-grid">
+      <a class="brand-tile" href="https://devantaexports.com/" target="_blank" rel="noopener">
+        <span class="brand-logo-wrap">
+          <img src="https://www.google.com/s2/favicons?domain=devantaexports.com&sz=128" alt="Devanta Exports" loading="lazy" onerror="this.classList.add('failed')" />
+          <span class="brand-mono" style="--bc:#B45309">DE</span>
+        </span>
+        <span>Devanta Exports</span>
+      </a>
+      <a class="brand-tile" href="https://get-nothin.com/" target="_blank" rel="noopener">
+        <span class="brand-logo-wrap">
+          <img src="https://www.google.com/s2/favicons?domain=get-nothin.com&sz=128" alt="Get Nothin" loading="lazy" onerror="this.classList.add('failed')" />
+          <span class="brand-mono" style="--bc:#0F172A">GN</span>
+        </span>
+        <span>Get Nothin</span>
+      </a>
+      <a class="brand-tile" href="https://www.easytravel.co.tz/" target="_blank" rel="noopener">
+        <span class="brand-logo-wrap">
+          <img src="https://www.google.com/s2/favicons?domain=easytravel.co.tz&sz=128" alt="Easy Travels" loading="lazy" onerror="this.classList.add('failed')" />
+          <span class="brand-mono" style="--bc:#F59E0B">ET</span>
+        </span>
+        <span>Easy Travels</span>
+      </a>
+      <a class="brand-tile" href="https://petshopinpune.com/" target="_blank" rel="noopener">
+        <span class="brand-logo-wrap">
+          <img src="https://www.google.com/s2/favicons?domain=petshopinpune.com&sz=128" alt="Pet Shop in Pune" loading="lazy" onerror="this.classList.add('failed')" />
+          <span class="brand-mono" style="--bc:#EA580C">PP</span>
+        </span>
+        <span>Pet Shop in Pune</span>
+      </a>
+      <div class="brand-tile brand-tile-more">
+        <span class="brand-logo-wrap">
+          <span class="brand-mono" style="--bc:#6366F1">+</span>
+        </span>
+        <span>& many more</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BEYOND WEBSITES ============ -->
+  <section class="section beyond">
+    <div class="section-head">
+      <span class="kicker">// Beyond websites</span>
+      <h2>Brand systems,<br />packaging, <span class="grad">campaigns.</span></h2>
+      <p>Most of what we ship never makes it to a browser. Below: a slice of the print, packaging and social-ad work we've delivered in the last six months.</p>
+    </div>
+
+    <div class="beyond-grid">
+      <figure class="beyond-card beyond-card-feature">
+        <img src="assets/social-creatives-1.jpg" alt="Social media + Meta ad creatives" loading="lazy" />
+        <figcaption>
+          <span class="beyond-tag">Meta Ads · Social</span>
+          <h4>Ad creatives at scale</h4>
+          <p>10+ brands. Real-estate, skincare, travel, fashion — every campaign needs new artwork every week.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="beyond-card">
+        <img src="assets/xl-enterprises-brand.jpg" alt="XL Enterprises brand system" loading="lazy" />
+        <figcaption>
+          <span class="beyond-tag">Brand Identity</span>
+          <h4>XL Enterprises — full system</h4>
+          <p>Logo mark, sage-green &amp; deep-blue palette, merch and packaging mockups — "Together we move."</p>
+        </figcaption>
+      </figure>
+
+      <figure class="beyond-card">
+        <img src="assets/social-creatives-2.jpg" alt="Meta ad creatives for real estate + lifestyle" loading="lazy" />
+        <figcaption>
+          <span class="beyond-tag">Real Estate · Lifestyle</span>
+          <h4>Multi-vertical creatives</h4>
+          <p>Skyrise, Zenith, Vaxis, Sanmii, Pet Friend, Vedas — Reels, carousels and static feeds tuned for each industry.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="beyond-card">
+        <img src="assets/business-cards.jpg" alt="Business cards" loading="lazy" />
+        <figcaption>
+          <span class="beyond-tag">Print · Identity</span>
+          <h4>Business cards &amp; collateral</h4>
+          <p>Sanmii Global Exports, XL Enterprises, Metro Realty — print-ready cards, brochures and billboards.</p>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ META ADS / CASES ============ -->
+  <section class="section work" id="meta-ads">
+    <div class="section-head">
+      <span class="kicker">// Meta Ads · Performance</span>
+      <h2>Campaigns running<br /><span class="grad">right now.</span></h2>
+      <p>End-to-end Meta Ads work — creative, audiences, pixel hygiene and weekly optimisation. These are the brands actively on the platform.</p>
+    </div>
+
+    <div class="case-studies port-cases">
+      <a class="case-card case-feature" href="https://www.instagram.com/mahaganpati_gold_buyers?igsh=eGFsZ281enhzeHh2" target="_blank" rel="noopener noreferrer">
+        <div class="case-left">
+          <div class="case-logo" style="--cg1:#F59E0B; --cg2:#B45309">M</div>
+          <div>
+            <div class="case-meta">
+              <span class="case-handle">@mahaganpati_gold_buyers</span>
+              <span class="case-tag">Gold Resale · Jewellery</span>
+            </div>
+            <h4>Mahaganpati Gold Buyers <span class="case-arrow">↗</span></h4>
+            <p>End-to-end Meta Ads — creative, audience targeting and conversion-led optimisation across Instagram and Facebook.</p>
+          </div>
+        </div>
+        <div class="case-right">
+          <span class="case-number">₹30,000</span>
+          <span class="case-label">profit generated · 7 days</span>
+          <span class="case-pill">Meta Ads</span>
+        </div>
+      </a>
+
+      <!-- Real campaign metrics — sourced from active Meta Ads Manager dashboards -->
+      <div class="dash-grid">
+        <div class="dash-card dash-card-hero">
+          <div class="dash-head">
+            <span class="dash-tag">Wellness · High-Volume Lead Gen</span>
+            <span class="dash-range">8 Apr – 16 May 2026</span>
+          </div>
+          <div class="dash-metrics">
+            <div class="dash-metric dash-metric-hero">
+              <span class="dash-label">Leads (Form)</span>
+              <span class="dash-value">1,316</span>
+            </div>
+            <div class="dash-metric">
+              <span class="dash-label">Per lead</span>
+              <span class="dash-value-sm">₹14.71</span>
+            </div>
+            <div class="dash-metric">
+              <span class="dash-label">Amount spent</span>
+              <span class="dash-value-sm">₹19,360</span>
+            </div>
+          </div>
+          <p class="dash-note">High-volume play — sustained ~50 leads / day at one-tenth the peer-median CPL. Same ad set, 38 days.</p>
+        </div>
+
+        <div class="dash-card">
+          <div class="dash-head">
+            <span class="dash-tag">Service Business · Click-to-WhatsApp</span>
+            <span class="dash-range">19 Mar – 20 May 2026</span>
+          </div>
+          <div class="dash-metrics">
+            <div class="dash-metric dash-metric-hero">
+              <span class="dash-label">WhatsApp conversations</span>
+              <span class="dash-value">1,081</span>
+            </div>
+            <div class="dash-metric">
+              <span class="dash-label">Per conversation</span>
+              <span class="dash-value-sm">₹10.43</span>
+            </div>
+            <div class="dash-metric">
+              <span class="dash-label">Amount spent</span>
+              <span class="dash-value-sm">₹11,274</span>
+            </div>
+          </div>
+          <p class="dash-note">Click-to-WhatsApp funnel — direct sales conversations, zero landing-page friction.</p>
+        </div>
+
+        <div class="dash-card">
+          <div class="dash-head">
+            <span class="dash-tag">Real Estate · Premium Inventory</span>
+            <span class="dash-range">13 Mar – 20 May 2026</span>
+          </div>
+          <div class="dash-metrics">
+            <div class="dash-metric dash-metric-hero">
+              <span class="dash-label">Leads (Form)</span>
+              <span class="dash-value">181</span>
+            </div>
+            <div class="dash-metric">
+              <span class="dash-label">Per lead</span>
+              <span class="dash-value-sm">₹291.48</span>
+            </div>
+            <div class="dash-metric">
+              <span class="dash-label">Amount spent</span>
+              <span class="dash-value-sm">₹52,757</span>
+            </div>
+          </div>
+          <p class="dash-note">Lookalike-scaled ad set targeting high-intent buyers for premium inventory.</p>
+        </div>
+
+        <div class="dash-card">
+          <div class="dash-head">
+            <span class="dash-tag">Real Estate · Core Targeting</span>
+            <span class="dash-range">13 Mar – 20 May 2026</span>
+          </div>
+          <div class="dash-metrics">
+            <div class="dash-metric dash-metric-hero">
+              <span class="dash-label">Leads (Form)</span>
+              <span class="dash-value">150</span>
+            </div>
+            <div class="dash-metric">
+              <span class="dash-label">Per lead</span>
+              <span class="dash-value-sm">₹272.18</span>
+            </div>
+            <div class="dash-metric">
+              <span class="dash-label">Amount spent</span>
+              <span class="dash-value-sm">₹40,827</span>
+            </div>
+          </div>
+          <p class="dash-note">Core interest-based set — steady lead flow at qualified buyer CPLs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CAPABILITIES ============ -->
+  <section class="section work" id="capabilities">
+    <div class="section-head">
+      <span class="kicker">// What we run</span>
+      <h2>The growth stack<br /><span class="grad">behind every brand.</span></h2>
+      <p>The disciplines we layer together on every engagement — built and managed by one team.</p>
+    </div>
+
+    <div class="marketing-grid">
+      <div class="mkt-card">
+        <div class="mkt-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2C7 8 7 14 12 22M12 2c5 6 5 12 0 20M2 12c6-5 14-5 20 0M2 12c6 5 14 5 20 0"/><circle cx="12" cy="12" r="9"/></svg>
+        </div>
+        <h4>Meta Ads</h4>
+        <p>Full-funnel Facebook and Instagram campaigns — creative testing, audience iteration, pixel hygiene and ROAS-led optimisation.</p>
+        <ul class="mkt-list">
+          <li>Campaign architecture</li>
+          <li>Creative testing</li>
+          <li>Pixel & conversions API</li>
+          <li>Weekly performance reports</li>
+        </ul>
+      </div>
+
+      <div class="mkt-card mkt-card-hero">
+        <div class="mkt-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg>
+        </div>
+        <h4>Performance Marketing</h4>
+        <p>Data-led acquisition across Meta, Google and emerging platforms — every rupee tracked, every campaign tuned for measurable growth.</p>
+        <ul class="mkt-list">
+          <li>Multi-channel paid media</li>
+          <li>Funnel & landing page CRO</li>
+          <li>Attribution & analytics</li>
+          <li>Scale-up playbooks</li>
+        </ul>
+      </div>
+
+      <div class="mkt-card">
+        <div class="mkt-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+        </div>
+        <h4>Social Media Handling</h4>
+        <p>Daily content, monthly planning and steady community engagement — your brand's voice, consistently on every feed it lives on.</p>
+        <ul class="mkt-list">
+          <li>Content calendar & design</li>
+          <li>Reels & short-form video</li>
+          <li>Community management</li>
+          <li>Monthly growth reports</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="section port-cta">
+    <div class="port-cta-inner">
+      <span class="kicker">// Want to be next?</span>
+      <h2>Got a project<br /><span class="grad">worth shipping?</span></h2>
+      <p>Tell us about it. We'll come back inside one business day with a clear plan and a fair quote.</p>
+      <div class="port-cta-actions">
+        <a href="contact.html" class="btn btn-primary">Start a project <span>→</span></a>
+        <a href="index.html" class="btn btn-ghost">Back to home</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="logo-mark">
+          <img src="assets/amh-logo.svg" alt="AMH Solutions" />
+        </span>
+        <div>
+          <strong>AMH Solutions</strong>
+          <span>A bridge that connects your business with technology</span>
+        </div>
+      </div>
+      <div class="footer-cols">
+        <div>
+          <h5>Pages</h5>
+          <a href="services.html">Services</a>
+          <a href="portfolio.html">Portfolio</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div>
+          <h5>Services</h5>
+          <a href="services.html">Web Development</a>
+          <a href="services.html">Custom Software</a>
+          <a href="services.html">Meta Ads & Social</a>
+          <a href="services.html">Branding</a>
+        </div>
+        <div>
+          <h5>Connect</h5>
+          <a href="mailto:hello@amhsolutions.com">Email</a>
+          <a href="#">LinkedIn</a>
+          <a href="#">Instagram</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 AMH Solutions. All rights reserved.</span>
+      <span>Built with care.</span>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.0.45/dist/lenis.min.js"></script>
+  <script src="script.js"></script>
+  <script src="/dynamic.js" defer></script>
+</body>
+</html>

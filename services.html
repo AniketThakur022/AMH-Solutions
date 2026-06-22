@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services — AMH Solutions</title>
+  <meta name="description" content="The full services stack at AMH Solutions — full-stack web development, custom software, IT solutions, Meta Ads, social media handling, brand identity and packaging design." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.158.0/three.min.js"></script>
+</head>
+<body>
+
+  <canvas id="bgcanvas"></canvas>
+  <div class="bg-grain" aria-hidden="true"></div>
+  <div class="bg-vignette" aria-hidden="true"></div>
+
+  <!-- ============ NAV ============ -->
+  <nav class="nav" id="nav">
+    <a href="index.html" class="logo">
+      <span class="logo-mark">
+        <img src="assets/amh-logo.svg" alt="AMH Solutions" />
+      </span>
+      <span class="logo-text">AMH<span>Solutions</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="services.html" class="is-active">Services</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-signin" id="navSignin">
+      <button class="nav-signin-btn" type="button" aria-haspopup="true" aria-expanded="false">
+        Sign in <span class="caret" aria-hidden="true">▾</span>
+      </button>
+      <div class="nav-signin-menu" role="menu">
+        <a href="/admin/login.html" role="menuitem">
+          <strong>Admin sign in</strong>
+          <span>Manage portfolio, clients &amp; projects</span>
+        </a>
+        <a href="/client/login.html" role="menuitem">
+          <strong>Client sign in</strong>
+          <span>View your projects &amp; deliverables</span>
+        </a>
+      </div>
+    </div>
+    <a href="contact.html" class="nav-cta">Start a project →</a>
+    <button class="nav-burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <span class="kicker">// Services</span>
+      <h1 class="page-hero-title">
+        Everything you need<br />
+        to <span class="grad">build, launch and grow.</span>
+      </h1>
+      <p class="page-hero-sub">
+        We run eight service verticals — from code and software to brand systems, Meta Ads and SEO.
+        One team, one quote, no hand-offs.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ FULL SERVICES ============ -->
+  <section class="section services">
+    <div class="services-grid">
+      <article class="service" data-i="01">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 5h18v12H3z"/><path d="M3 9h18"/><circle cx="6" cy="7" r=".5" fill="currentColor"/><circle cx="8" cy="7" r=".5" fill="currentColor"/><circle cx="10" cy="7" r=".5" fill="currentColor"/><path d="M9 21h6m-3-4v4"/></svg>
+        </div>
+        <h3>Full-Stack Web Development</h3>
+        <p>Production-grade websites and web apps built on modern stacks — React, Next.js, Node, Python — with clean APIs and scalable infra.</p>
+        <span class="service-num">01</span>
+      </article>
+
+      <article class="service" data-i="02">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 6 2 12l6 6"/><path d="m16 6 6 6-6 6"/><path d="m14 4-4 16"/></svg>
+        </div>
+        <h3>Custom Software</h3>
+        <p>Tailored software built around your workflow — internal tools, dashboards, automations and integrations that make teams faster.</p>
+        <span class="service-num">02</span>
+      </article>
+
+      <article class="service" data-i="03">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+        </div>
+        <h3>Technical Solutions</h3>
+        <p>Architecture, code reviews, performance audits and migrations — we step in when something needs to be fixed, fast and properly.</p>
+        <span class="service-num">03</span>
+      </article>
+
+      <article class="service" data-i="04">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 8h10M7 12h10M7 16h6"/></svg>
+        </div>
+        <h3>Complete IT Solutions</h3>
+        <p>Domains, hosting, email, security, CRMs and back-office tooling — one partner for every piece of your IT stack.</p>
+        <span class="service-num">04</span>
+      </article>
+
+      <article class="service" data-i="05">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        </div>
+        <h3>Social Media Handling</h3>
+        <p>Strategy, content, scheduling and reporting — we keep your social presence consistent, on-brand and growing every month.</p>
+        <span class="service-num">05</span>
+      </article>
+
+      <article class="service" data-i="06">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/></svg>
+        </div>
+        <h3>Logo & Brand Identity</h3>
+        <p>Distinctive logos, type systems and brand guidelines that make your business instantly recognisable across every surface.</p>
+        <span class="service-num">06</span>
+      </article>
+
+      <article class="service" data-i="07">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7l9-4 9 4-9 4z"/><path d="M3 7v10l9 4 9-4V7"/><path d="M12 11v10"/></svg>
+        </div>
+        <h3>Packaging & Labelling Design</h3>
+        <p>Shelf-ready packaging and label systems — designed for print, optimised for shelf impact, and built for export-grade compliance.</p>
+        <span class="service-num">07</span>
+      </article>
+
+      <article class="service service-wide" data-i="08">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/><path d="M11 7v8M7 11h8"/></svg>
+        </div>
+        <h3>SEO & Organic Growth</h3>
+        <p>Technical SEO audits, on-page optimisation, schema, content strategy and local SEO — built to compound traffic month after month, long after the ads turn off.</p>
+        <span class="service-num">08</span>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ TOOLS WE USE ============ -->
+  <section class="section tools">
+    <div class="section-head">
+      <span class="kicker">// Our stack</span>
+      <h2>The tools<br /><span class="grad">behind every deliverable.</span></h2>
+      <p>A focused toolchain we trust — for code, design, motion and research.</p>
+    </div>
+
+    <div class="tools-list">
+      <div class="tools-row">
+        <div class="tools-label">Design &amp; Branding</div>
+        <div class="tools-items">
+          <span>Adobe Photoshop</span><span>Adobe Illustrator</span><span>Figma</span><span>Adobe XD</span>
+        </div>
+      </div>
+      <div class="tools-row">
+        <div class="tools-label">Web &amp; Prototypes</div>
+        <div class="tools-items">
+          <span>Framer</span><span>HTML / CSS / JS</span><span>React · Next.js</span><span>Node · Python</span>
+        </div>
+      </div>
+      <div class="tools-row">
+        <div class="tools-label">Motion &amp; 3D</div>
+        <div class="tools-items">
+          <span>Adobe After Effects</span><span>Spline</span><span>GSAP</span><span>Three.js</span>
+        </div>
+      </div>
+      <div class="tools-row">
+        <div class="tools-label">Research &amp; Workflow</div>
+        <div class="tools-items">
+          <span>Notion</span><span>Mobbin</span><span>Muzli</span><span>Behance</span><span>Dribbble</span>
+        </div>
+      </div>
+      <div class="tools-row">
+        <div class="tools-label">Marketing</div>
+        <div class="tools-items">
+          <span>Meta Ads Manager</span><span>Google Ads</span><span>Meta Pixel · CAPI</span><span>GA4</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHY US ============ -->
+  <section class="section why">
+    <div class="why-grid">
+      <div class="why-left">
+        <span class="kicker">// Why AMH</span>
+        <h2>One team.<br /><span class="grad">Every layer</span> of your business.</h2>
+        <p>Most agencies hand you off between a designer, a developer and a marketer. We don't. AMH Solutions runs as a single integrated team — so your code, your brand and your campaigns all speak the same language.</p>
+        <a href="contact.html" class="btn btn-primary">Work with us <span>→</span></a>
+      </div>
+      <div class="why-right">
+        <div class="why-card">
+          <h4>End-to-end ownership</h4>
+          <p>From the first wireframe to deployment and post-launch growth — one accountable team.</p>
+        </div>
+        <div class="why-card">
+          <h4>Modern engineering</h4>
+          <p>TypeScript, Next.js, Python, cloud-native infra — no legacy baggage, no shortcuts.</p>
+        </div>
+        <div class="why-card">
+          <h4>Design-led thinking</h4>
+          <p>We treat brand and product as one — every decision serves how your customer feels.</p>
+        </div>
+        <div class="why-card">
+          <h4>Built to scale</h4>
+          <p>Whatever we ship is built to grow — clean code, clean systems, zero technical debt.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROCESS ============ -->
+  <section class="section process">
+    <div class="section-head center">
+      <span class="kicker">// How we work</span>
+      <h2>A process that <span class="grad">just works.</span></h2>
+      <p>Four clean steps. No jargon, no surprises — just steady, visible progress.</p>
+    </div>
+
+    <div class="process-line">
+      <div class="step">
+        <span class="step-num">01</span>
+        <h4>Discover</h4>
+        <p>We dig into your goals, audience and constraints — then map the shortest path to value.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">02</span>
+        <h4>Design</h4>
+        <p>Wireframes, brand directions, prototypes — everything reviewed and signed off before code.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">03</span>
+        <h4>Build</h4>
+        <p>Weekly demos, clean commits, transparent progress — you always know where the project stands.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">04</span>
+        <h4>Launch & grow</h4>
+        <p>We don't disappear after launch — we monitor, iterate, and grow your product with you.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="section port-cta">
+    <div class="port-cta-inner">
+      <span class="kicker">// Get started</span>
+      <h2>Ready to <span class="grad">work together?</span></h2>
+      <p>Tell us about your project. We'll come back inside one business day with a clear plan and a fair quote.</p>
+      <div class="port-cta-actions">
+        <a href="contact.html" class="btn btn-primary">Start a project <span>→</span></a>
+        <a href="portfolio.html" class="btn btn-ghost">See our work</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="logo-mark">
+          <img src="assets/amh-logo.svg" alt="AMH Solutions" />
+        </span>
+        <div>
+          <strong>AMH Solutions</strong>
+          <span>A bridge that connects your business with technology</span>
+        </div>
+      </div>
+      <div class="footer-cols">
+        <div>
+          <h5>Pages</h5>
+          <a href="services.html">Services</a>
+          <a href="portfolio.html">Portfolio</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div>
+          <h5>Services</h5>
+          <a href="services.html">Web Development</a>
+          <a href="services.html">Custom Software</a>
+          <a href="services.html">Meta Ads & Social</a>
+          <a href="services.html">Branding</a>
+        </div>
+        <div>
+          <h5>Connect</h5>
+          <a href="mailto:hello@amhsolutions.com">Email</a>
+          <a href="#">LinkedIn</a>
+          <a href="#">Instagram</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 AMH Solutions. All rights reserved.</span>
+      <span>Built with care.</span>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.0.45/dist/lenis.min.js"></script>
+  <script src="script.js"></script>
+  <script src="/dynamic.js" defer></script>
+</body>
+</html>

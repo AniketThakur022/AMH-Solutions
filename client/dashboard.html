@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Projects — AMH Solutions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="/admin/admin.css" />
+</head>
+<body class="admin-body">
+
+  <header class="admin-topbar">
+    <a href="/client/dashboard.html" class="admin-brand">
+      <img src="/assets/amh-logo.svg" alt="AMH Solutions" />
+      <span>AMH<span>Client</span></span>
+    </a>
+
+    <div></div>
+
+    <div class="admin-meta">
+      <span class="admin-who" id="clientWho"></span>
+      <a href="/" class="admin-link">View site →</a>
+      <button class="admin-logout" id="logoutBtn">Sign out</button>
+    </div>
+  </header>
+
+  <main class="client-wrap">
+    <div class="client-hello">
+      <div>
+        <span class="kicker">// Project portal</span>
+        <h1 id="clientGreeting">Welcome back.</h1>
+        <p>Live status of your engagement with AMH Solutions. Updates posted as work progresses.</p>
+      </div>
+      <a href="mailto:hello@amhsolutions.com" class="btn btn-ghost">Email your team →</a>
+    </div>
+
+    <section class="project-section" id="runningSection">
+      <h2>In progress <span class="count" id="runningCount"></span></h2>
+      <div class="project-list" id="runningList"></div>
+    </section>
+
+    <section class="project-section" id="completedSection">
+      <h2>Completed <span class="count" id="completedCount"></span></h2>
+      <div class="project-list" id="completedList"></div>
+    </section>
+  </main>
+
+  <script>
+    const ACTIVE_STATUSES = new Set(['planning', 'in_progress', 'review', 'paused']);
+
+    async function api(url) {
+      const r = await fetch(url);
+      if (r.status === 401) { window.location.href = '/client/login.html'; throw new Error('auth'); }
+      if (!r.ok) throw new Error(`${url} → ${r.status}`);
+      return r.json();
+    }
+
+    function esc(s) {
+      return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    }
+    function renderCard(p) {
+      const status = (p.status || '').replace('_', ' ');
+      return `
+        <article class="project-card">
+          <div class="project-card-info">
+            <h3>${esc(p.title)}</h3>
+            ${p.description ? `<p>${esc(p.description)}</p>` : ''}
+            <div class="project-card-meta">
+              <span><span class="status-pill ${p.status}">${esc(status)}</span></span>
+              ${p.start_date ? `<span>Started<strong>${esc(p.start_date)}</strong></span>` : ''}
+              ${p.expected_end_date && p.status !== 'completed' ? `<span>Expected<strong>${esc(p.expected_end_date)}</strong></span>` : ''}
+              ${p.completed_date ? `<span>Completed<strong>${esc(p.completed_date)}</strong></span>` : ''}
+            </div>
+            ${p.notes ? `<p style="margin-top:14px;padding-top:14px;border-top:1px solid var(--line);color:var(--text-dim);font-size:13.5px;"><strong style="color:var(--text);font-weight:500;">Latest:</strong> ${esc(p.notes)}</p>` : ''}
+          </div>
+          <div class="project-progress">
+            <span class="progress-label">${p.progress_percent}%</span>
+            <div class="progress-bar"><div class="progress-fill" style="width:${p.progress_percent || 0}%"></div></div>
+          </div>
+        </article>`;
+    }
+
+    (async () => {
+      try {
+        const me = await api('/api/me');
+        if (!me.authenticated || me.role !== 'client') { window.location.href = '/client/login.html'; return; }
+        document.getElementById('clientWho').textContent = me.email;
+        document.getElementById('clientGreeting').textContent = `Hello, ${me.full_name || me.company_name || me.email.split('@')[0]}.`;
+
+        const projects = await api('/api/client/projects');
+        const running = projects.filter(p => ACTIVE_STATUSES.has(p.status));
+        const completed = projects.filter(p => p.status === 'completed');
+
+        const rl = document.getElementById('runningList');
+        const cl = document.getElementById('completedList');
+
+        document.getElementById('runningCount').textContent = `(${running.length})`;
+        document.getElementById('completedCount').textContent = `(${completed.length})`;
+
+        rl.innerHTML = running.length
+          ? running.map(renderCard).join('')
+          : `<p style="color:var(--text-mute);font-size:14px;padding:18px 4px;">No active projects right now. Your team will be in touch.</p>`;
+        cl.innerHTML = completed.length
+          ? completed.map(renderCard).join('')
+          : `<p style="color:var(--text-mute);font-size:14px;padding:18px 4px;">No completed projects yet.</p>`;
+
+        if (!running.length) document.getElementById('runningSection').classList.add('is-empty');
+        if (!completed.length) document.getElementById('completedSection').classList.add('is-empty');
+      } catch (e) {
+        console.error(e);
+      }
+    })();
+
+    document.getElementById('logoutBtn').addEventListener('click', async () => {
+      await fetch('/logout', { method: 'POST' });
+      window.location.href = '/';
+    });
+  </script>
+</body>
+</html>

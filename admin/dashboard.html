@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard — AMH Solutions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="/admin/admin.css" />
+</head>
+<body class="admin-body">
+
+  <!-- ============ ADMIN TOPBAR ============ -->
+  <header class="admin-topbar">
+    <a href="/admin/dashboard.html" class="admin-brand">
+      <img src="/assets/amh-logo.svg" alt="AMH Solutions" />
+      <span>AMH<span>Admin</span></span>
+    </a>
+
+    <nav class="admin-tabs" id="adminTabs">
+      <button data-tab="brands" class="is-active">Brands</button>
+      <button data-tab="services">Services</button>
+      <button data-tab="portfolio">Portfolio</button>
+      <button data-tab="clients">Clients</button>
+      <button data-tab="projects">Projects</button>
+    </nav>
+
+    <div class="admin-meta">
+      <span class="admin-who" id="adminWho"></span>
+      <a href="/" class="admin-link">View site →</a>
+      <button class="admin-logout" id="logoutBtn">Sign out</button>
+    </div>
+  </header>
+
+  <main class="admin-main">
+
+    <!-- ──────── BRANDS ──────── -->
+    <section class="admin-pane is-active" data-pane="brands">
+      <div class="pane-head">
+        <div>
+          <span class="kicker">// Brands wall</span>
+          <h2>Brands we've worked with</h2>
+          <p>These appear in the brand wall on the homepage and the Portfolio page.</p>
+        </div>
+        <button class="btn btn-primary" data-open="brandModal">+ Add brand</button>
+      </div>
+
+      <div class="admin-table-wrap">
+        <table class="admin-table" id="brandsTable">
+          <thead>
+            <tr><th>Order</th><th>Logo</th><th>Name</th><th>Domain</th><th>Mono</th><th>Link</th><th>Featured</th><th>Active</th><th></th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ──────── SERVICES ──────── -->
+    <section class="admin-pane" data-pane="services">
+      <div class="pane-head">
+        <div>
+          <span class="kicker">// Services</span>
+          <h2>Service verticals</h2>
+          <p>Displayed on the Services page and homepage teaser.</p>
+        </div>
+        <button class="btn btn-primary" data-open="serviceModal">+ Add service</button>
+      </div>
+
+      <div class="admin-table-wrap">
+        <table class="admin-table" id="servicesTable">
+          <thead>
+            <tr><th>Order</th><th>Title</th><th>Description</th><th>Active</th><th></th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ──────── PORTFOLIO ──────── -->
+    <section class="admin-pane" data-pane="portfolio">
+      <div class="pane-head">
+        <div>
+          <span class="kicker">// Portfolio</span>
+          <h2>Portfolio items (websites & cases)</h2>
+          <p>Shown on the Portfolio page and homepage Selected Work.</p>
+        </div>
+        <button class="btn btn-primary" data-open="portfolioModal">+ Add item</button>
+      </div>
+
+      <div class="admin-table-wrap">
+        <table class="admin-table" id="portfolioTable">
+          <thead>
+            <tr><th>Order</th><th>Image</th><th>Title</th><th>URL</th><th>Category</th><th>Active</th><th></th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ──────── CLIENTS ──────── -->
+    <section class="admin-pane" data-pane="clients">
+      <div class="pane-head">
+        <div>
+          <span class="kicker">// Clients</span>
+          <h2>Client accounts</h2>
+          <p>Each client signs in to see only their own projects.</p>
+        </div>
+        <button class="btn btn-primary" data-open="clientModal">+ Add client</button>
+      </div>
+
+      <div class="admin-table-wrap">
+        <table class="admin-table" id="clientsTable">
+          <thead>
+            <tr><th>ID</th><th>Email</th><th>Name</th><th>Company</th><th>Created</th><th></th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ──────── PROJECTS ──────── -->
+    <section class="admin-pane" data-pane="projects">
+      <div class="pane-head">
+        <div>
+          <span class="kicker">// Projects</span>
+          <h2>All client projects</h2>
+          <p>Assign to a client, set status and progress — clients see only their own.</p>
+        </div>
+        <button class="btn btn-primary" data-open="projectModal">+ Add project</button>
+      </div>
+
+      <div class="admin-table-wrap">
+        <table class="admin-table" id="projectsTable">
+          <thead>
+            <tr><th>Client</th><th>Project</th><th>Status</th><th>Progress</th><th>Dates</th><th></th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ MODALS ============ -->
+  <div class="modal-shell" id="brandModal">
+    <div class="modal-card">
+      <button class="modal-close" data-close>×</button>
+      <h3 id="brandModalTitle">Add brand</h3>
+      <form data-form="brand">
+        <input type="hidden" name="id" />
+        <div class="field"><label>Name</label><input name="name" required /></div>
+        <div class="field-row">
+          <div class="field"><label>Domain (for logo lookup)</label><input name="domain" placeholder="example.com" /></div>
+          <div class="field"><label>Monogram</label><input name="monogram" maxlength="3" placeholder="EX" /></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label>Color</label><input name="color" type="color" value="#3B82F6" /></div>
+          <div class="field"><label>Link URL (optional)</label><input name="link" placeholder="https://..." /></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label>Display order</label><input name="display_order" type="number" value="999" /></div>
+          <div class="field-check">
+            <label><input type="checkbox" name="is_featured" /> Featured on homepage</label>
+            <label><input type="checkbox" name="is_active" checked /> Active</label>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Save brand</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-shell" id="serviceModal">
+    <div class="modal-card">
+      <button class="modal-close" data-close>×</button>
+      <h3 id="serviceModalTitle">Add service</h3>
+      <form data-form="service">
+        <input type="hidden" name="id" />
+        <div class="field"><label>Title</label><input name="title" required /></div>
+        <div class="field"><label>Description</label><textarea name="description" rows="4"></textarea></div>
+        <div class="field-row">
+          <div class="field"><label>Display order</label><input name="display_order" type="number" value="999" /></div>
+          <div class="field-check"><label><input type="checkbox" name="is_active" checked /> Active</label></div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Save service</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-shell" id="portfolioModal">
+    <div class="modal-card">
+      <button class="modal-close" data-close>×</button>
+      <h3 id="portfolioModalTitle">Add portfolio item</h3>
+      <form data-form="portfolio">
+        <input type="hidden" name="id" />
+        <div class="field"><label>Title</label><input name="title" required /></div>
+        <div class="field-row">
+          <div class="field"><label>Project URL</label><input name="url" placeholder="https://..." /></div>
+          <div class="field"><label>Category</label><input name="category" placeholder="Travel · Tourism" /></div>
+        </div>
+        <div class="field"><label>Tags (comma-separated)</label><input name="tags" placeholder="Web Development, D2C" /></div>
+        <div class="field"><label>Description</label><textarea name="description" rows="3"></textarea></div>
+        <div class="field">
+          <label>Image</label>
+          <div class="upload-row">
+            <input name="image_path" placeholder="/uploads/... or external URL" />
+            <input type="file" id="portfolioImageFile" accept="image/*" />
+          </div>
+          <small class="field-hint">Upload an image or paste an existing URL. The thum.io format works for live sites.</small>
+        </div>
+        <div class="field-row">
+          <div class="field"><label>Display order</label><input name="display_order" type="number" value="999" /></div>
+          <div class="field-check"><label><input type="checkbox" name="is_active" checked /> Active</label></div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Save item</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-shell" id="clientModal">
+    <div class="modal-card">
+      <button class="modal-close" data-close>×</button>
+      <h3 id="clientModalTitle">Add client</h3>
+      <form data-form="client">
+        <input type="hidden" name="id" />
+        <div class="field"><label>Email</label><input name="email" type="email" required /></div>
+        <div class="field-row">
+          <div class="field"><label>Full name</label><input name="full_name" /></div>
+          <div class="field"><label>Company</label><input name="company_name" /></div>
+        </div>
+        <div class="field"><label>Password (blank = auto-generated)</label><input name="password" type="text" placeholder="leave blank to generate" /></div>
+        <button type="submit" class="btn btn-primary btn-block">Save client</button>
+        <p class="form-success" id="clientNote" style="display:none"></p>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal-shell" id="projectModal">
+    <div class="modal-card">
+      <button class="modal-close" data-close>×</button>
+      <h3 id="projectModalTitle">Add project</h3>
+      <form data-form="project">
+        <input type="hidden" name="id" />
+        <div class="field">
+          <label>Client</label>
+          <select name="client_id" id="projectClientSelect" required></select>
+        </div>
+        <div class="field"><label>Title</label><input name="title" required /></div>
+        <div class="field"><label>Description</label><textarea name="description" rows="3"></textarea></div>
+        <div class="field-row">
+          <div class="field">
+            <label>Status</label>
+            <select name="status" required>
+              <option value="planning">Planning</option>
+              <option value="in_progress" selected>In progress</option>
+              <option value="review">In review</option>
+              <option value="completed">Completed</option>
+              <option value="paused">Paused</option>
+            </select>
+          </div>
+          <div class="field"><label>Progress %</label><input name="progress_percent" type="number" min="0" max="100" value="0" /></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label>Start date</label><input name="start_date" type="date" /></div>
+          <div class="field"><label>Expected end</label><input name="expected_end_date" type="date" /></div>
+          <div class="field"><label>Completed</label><input name="completed_date" type="date" /></div>
+        </div>
+        <div class="field">
+          <label>Cover image</label>
+          <div class="upload-row">
+            <input name="cover_image" placeholder="/uploads/... or URL" />
+            <input type="file" id="projectCoverFile" accept="image/*" />
+          </div>
+        </div>
+        <div class="field"><label>Internal notes / latest update</label><textarea name="notes" rows="3"></textarea></div>
+        <button type="submit" class="btn btn-primary btn-block">Save project</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="/admin/admin.js"></script>
+</body>
+</html>

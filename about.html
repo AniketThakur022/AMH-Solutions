@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — AMH Solutions</title>
+  <meta name="description" content="Meet the team behind AMH Solutions — a small, focused crew of engineers, designers and marketers building digital products end-to-end." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.158.0/three.min.js"></script>
+</head>
+<body>
+
+  <canvas id="bgcanvas"></canvas>
+  <div class="bg-grain" aria-hidden="true"></div>
+  <div class="bg-vignette" aria-hidden="true"></div>
+
+  <!-- ============ NAV ============ -->
+  <nav class="nav" id="nav">
+    <a href="index.html" class="logo">
+      <span class="logo-mark">
+        <img src="assets/amh-logo.svg" alt="AMH Solutions" />
+      </span>
+      <span class="logo-text">AMH<span>Solutions</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="services.html">Services</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="about.html" class="is-active">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-signin" id="navSignin">
+      <button class="nav-signin-btn" type="button" aria-haspopup="true" aria-expanded="false">
+        Sign in <span class="caret" aria-hidden="true">▾</span>
+      </button>
+      <div class="nav-signin-menu" role="menu">
+        <a href="/admin/login.html" role="menuitem">
+          <strong>Admin sign in</strong>
+          <span>Manage portfolio, clients &amp; projects</span>
+        </a>
+        <a href="/client/login.html" role="menuitem">
+          <strong>Client sign in</strong>
+          <span>View your projects &amp; deliverables</span>
+        </a>
+      </div>
+    </div>
+    <a href="contact.html" class="nav-cta">Start a project →</a>
+    <button class="nav-burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <span class="kicker">// About us</span>
+      <h1 class="page-hero-title">
+        Small team.<br />
+        <span class="grad">Full-stack ambition.</span>
+      </h1>
+      <p class="page-hero-sub">
+        AMH Solutions is a four-person digital studio based in <strong>Wagholi, Pune</strong> —
+        building websites, brand systems and Meta Ads campaigns for 28+ businesses across
+        real estate, wellness, hospitality, exports and lifestyle.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ PERSONALITY ============ -->
+  <section class="section personality">
+    <div class="personality-grid">
+      <div class="personality-left">
+        <span class="kicker">// How we work</span>
+        <h2>Analytical thinkers.<br /><span class="grad">Detail-oriented strategists.</span><br />Visual enthusiasts.</h2>
+        <p>We experiment with new ideas, but keep them grounded in data and insights. Every piece of content has a purpose and a flavour. Every shipped pixel earns its place.</p>
+      </div>
+      <div class="personality-right">
+        <div class="why-card">
+          <h4>Analytical</h4>
+          <p>Audience-first decisions. We test, measure, iterate — never ship on instinct alone.</p>
+        </div>
+        <div class="why-card">
+          <h4>Detail-oriented</h4>
+          <p>Down to the kerning, the colour-stop, the line-height of every footer link.</p>
+        </div>
+        <div class="why-card">
+          <h4>Visual</h4>
+          <p>Branding, packaging, social — we obsess over how a customer feels when they see your work.</p>
+        </div>
+        <div class="why-card">
+          <h4>Strategic</h4>
+          <p>One quote, one timeline, one team. We own the outcome — not just the deliverable.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TEAM ============ -->
+  <section class="section team">
+    <div class="section-head">
+      <span class="kicker">// The team</span>
+      <h2>The minds behind<br /><span class="grad">AMH Solutions.</span></h2>
+      <p>Four people — engineers, designers and marketers — working as one team on every project we ship.</p>
+    </div>
+
+    <div class="team-grid">
+      <article class="member">
+        <div class="member-avatar" style="--ag1:#3B82F6; --ag2:#4F46E5">AT</div>
+        <h3>Aniket Singh Thakur</h3>
+        <div class="member-links">
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zM8.5 18H6V10h2.5v8zM7.25 8.75A1.5 1.5 0 1 1 7.25 5.75a1.5 1.5 0 0 1 0 3zM18 18h-2.5v-4.25c0-1.05-.45-1.75-1.5-1.75-.8 0-1.25.55-1.45 1.07-.07.19-.05.45-.05.71V18H10v-8h2.5v1.1c.35-.55 1-1.35 2.4-1.35 1.75 0 3.1 1.15 3.1 3.6V18z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+        </div>
+      </article>
+
+      <article class="member">
+        <div class="member-avatar" style="--ag1:#22D3EE; --ag2:#3B82F6">HA</div>
+        <h3>Harsh Ahirrao</h3>
+        <div class="member-links">
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zM8.5 18H6V10h2.5v8zM7.25 8.75A1.5 1.5 0 1 1 7.25 5.75a1.5 1.5 0 0 1 0 3zM18 18h-2.5v-4.25c0-1.05-.45-1.75-1.5-1.75-.8 0-1.25.55-1.45 1.07-.07.19-.05.45-.05.71V18H10v-8h2.5v1.1c.35-.55 1-1.35 2.4-1.35 1.75 0 3.1 1.15 3.1 3.6V18z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+        </div>
+      </article>
+
+      <article class="member">
+        <div class="member-avatar" style="--ag1:#4F46E5; --ag2:#8B5CF6">MS</div>
+        <h3>Manav Singh</h3>
+        <div class="member-links">
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zM8.5 18H6V10h2.5v8zM7.25 8.75A1.5 1.5 0 1 1 7.25 5.75a1.5 1.5 0 0 1 0 3zM18 18h-2.5v-4.25c0-1.05-.45-1.75-1.5-1.75-.8 0-1.25.55-1.45 1.07-.07.19-.05.45-.05.71V18H10v-8h2.5v1.1c.35-.55 1-1.35 2.4-1.35 1.75 0 3.1 1.15 3.1 3.6V18z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+        </div>
+      </article>
+
+      <article class="member">
+        <div class="member-avatar" style="--ag1:#60A5FA; --ag2:#22D3EE">HB</div>
+        <h3>Hrishi Badgujar</h3>
+        <div class="member-links">
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zM8.5 18H6V10h2.5v8zM7.25 8.75A1.5 1.5 0 1 1 7.25 5.75a1.5 1.5 0 0 1 0 3zM18 18h-2.5v-4.25c0-1.05-.45-1.75-1.5-1.75-.8 0-1.25.55-1.45 1.07-.07.19-.05.45-.05.71V18H10v-8h2.5v1.1c.35-.55 1-1.35 2.4-1.35 1.75 0 3.1 1.15 3.1 3.6V18z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ WHY US ============ -->
+  <section class="section why">
+    <div class="why-grid">
+      <div class="why-left">
+        <span class="kicker">// Why AMH</span>
+        <h2>One team.<br /><span class="grad">Every layer</span> of your business.</h2>
+        <p>Most agencies hand you off between a designer, a developer and a marketer. We don't. AMH Solutions runs as a single integrated team — so your code, your brand and your campaigns all speak the same language.</p>
+        <a href="contact.html" class="btn btn-primary">Work with us <span>→</span></a>
+      </div>
+      <div class="why-right">
+        <div class="why-card">
+          <h4>End-to-end ownership</h4>
+          <p>From the first wireframe to deployment and post-launch growth — one accountable team.</p>
+        </div>
+        <div class="why-card">
+          <h4>Modern engineering</h4>
+          <p>TypeScript, Next.js, Python, cloud-native infra — no legacy baggage, no shortcuts.</p>
+        </div>
+        <div class="why-card">
+          <h4>Design-led thinking</h4>
+          <p>We treat brand and product as one — every decision serves how your customer feels.</p>
+        </div>
+        <div class="why-card">
+          <h4>Built to scale</h4>
+          <p>Whatever we ship is built to grow — clean code, clean systems, zero technical debt.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="section port-cta">
+    <div class="port-cta-inner">
+      <span class="kicker">// Let's talk</span>
+      <h2>Want to <span class="grad">work with us?</span></h2>
+      <p>Tell us about your project. We'll come back inside one business day with a clear plan and a fair quote.</p>
+      <div class="port-cta-actions">
+        <a href="contact.html" class="btn btn-primary">Start a project <span>→</span></a>
+        <a href="portfolio.html" class="btn btn-ghost">See our work</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="logo-mark">
+          <img src="assets/amh-logo.svg" alt="AMH Solutions" />
+        </span>
+        <div>
+          <strong>AMH Solutions</strong>
+          <span>A bridge that connects your business with technology</span>
+        </div>
+      </div>
+      <div class="footer-cols">
+        <div>
+          <h5>Pages</h5>
+          <a href="services.html">Services</a>
+          <a href="portfolio.html">Portfolio</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div>
+          <h5>Services</h5>
+          <a href="services.html">Web Development</a>
+          <a href="services.html">Custom Software</a>
+          <a href="services.html">Meta Ads & Social</a>
+          <a href="services.html">Branding</a>
+        </div>
+        <div>
+          <h5>Connect</h5>
+          <a href="mailto:hello@amhsolutions.com">Email</a>
+          <a href="#">LinkedIn</a>
+          <a href="#">Instagram</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 AMH Solutions. All rights reserved.</span>
+      <span>Built with care.</span>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.0.45/dist/lenis.min.js"></script>
+  <script src="script.js"></script>
+  <script src="/dynamic.js" defer></script>
+</body>
+</html>

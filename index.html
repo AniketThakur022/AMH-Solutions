@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AMH Solutions — Full Stack Web Development & Complete IT Solutions</title>
+  <meta name="description" content="AMH Solutions builds full-stack web applications, custom software, brand identities and complete IT solutions — engineered to scale." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.158.0/three.min.js"></script>
+</head>
+<body>
+
+  <canvas id="bgcanvas"></canvas>
+  <div class="bg-grain" aria-hidden="true"></div>
+  <div class="bg-vignette" aria-hidden="true"></div>
+
+  <!-- ============ NAV ============ -->
+  <nav class="nav" id="nav">
+    <a href="index.html" class="logo">
+      <span class="logo-mark">
+        <img src="assets/amh-logo.svg" alt="AMH Solutions" />
+      </span>
+      <span class="logo-text">AMH<span>Solutions</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="services.html">Services</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-signin" id="navSignin">
+      <button class="nav-signin-btn" type="button" aria-haspopup="true" aria-expanded="false">
+        Sign in <span class="caret" aria-hidden="true">▾</span>
+      </button>
+      <div class="nav-signin-menu" role="menu">
+        <a href="/admin/login.html" role="menuitem">
+          <strong>Admin sign in</strong>
+          <span>Manage portfolio, clients &amp; projects</span>
+        </a>
+        <a href="/client/login.html" role="menuitem">
+          <strong>Client sign in</strong>
+          <span>View your projects &amp; deliverables</span>
+        </a>
+      </div>
+    </div>
+    <a href="contact.html" class="nav-cta">Start a project →</a>
+    <button class="nav-burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="home">
+    <div class="hero-glow"></div>
+    <div class="hero-inner">
+      <div class="hero-tag">
+        <span class="dot"></span> A bridge that connects your business with technology
+      </div>
+      <h1 class="hero-title">
+        We build <span class="grad">software</span><br />
+        that moves <span class="grad-2">businesses</span> forward.
+      </h1>
+      <p class="hero-sub">
+        Full-stack web development, custom software, brand & packaging design,
+        and complete IT solutions — delivered by one focused team.
+      </p>
+      <div class="hero-cta">
+        <a href="contact.html" class="btn btn-primary">Let's Talk <span>→</span></a>
+        <a href="services.html" class="btn btn-ghost">Explore services</a>
+      </div>
+      <div class="hero-stats">
+        <div><strong data-count="28" data-suffix="+">0</strong><span>Brands shipped</span></div>
+        <div><strong data-count="4" data-suffix="+">0</strong><span>Live websites</span></div>
+        <div><strong data-count="8" data-suffix="">0</strong><span>Service verticals</span></div>
+        <div><strong data-count="100" data-suffix="%">0</strong><span>In-house team</span></div>
+      </div>
+    </div>
+    <div class="hero-scroll">scroll <span>↓</span></div>
+  </section>
+
+  <!-- ============ MARQUEE ============ -->
+  <div class="marquee">
+    <div class="marquee-track">
+      <span>Full-Stack Development</span><span>★</span>
+      <span>Meta Ads</span><span>★</span>
+      <span>SEO</span><span>★</span>
+      <span>Brand Identity</span><span>★</span>
+      <span>Packaging Design</span><span>★</span>
+      <span>BookMyShow Banners</span><span>★</span>
+      <span>Performance Marketing</span><span>★</span>
+      <span>Social Media</span><span>★</span>
+      <span>Logo Design</span><span>★</span>
+      <span>SEO</span><span>★</span>
+      <span>Meta Ads</span><span>★</span>
+      <span>Brand Identity</span><span>★</span>
+      <span>Packaging Design</span><span>★</span>
+      <span>BookMyShow Banners</span><span>★</span>
+    </div>
+  </div>
+
+  <!-- ============ SERVICES TEASER ============ -->
+  <section class="section services">
+    <div class="section-head">
+      <span class="kicker">// What we do</span>
+      <h2>Services engineered<br /><span class="grad">end-to-end.</span></h2>
+      <p>From the first line of code to the last pixel of your packaging — we cover the full stack of building, launching and growing a modern business.</p>
+    </div>
+
+    <div class="services-grid services-grid-teaser">
+      <article class="service">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 5h18v12H3z"/><path d="M3 9h18"/><circle cx="6" cy="7" r=".5" fill="currentColor"/><circle cx="8" cy="7" r=".5" fill="currentColor"/><circle cx="10" cy="7" r=".5" fill="currentColor"/><path d="M9 21h6m-3-4v4"/></svg>
+        </div>
+        <h3>Full-Stack Web Development</h3>
+        <p>Production-grade websites and web apps built on modern stacks — React, Next.js, Node, Python.</p>
+        <span class="service-num">01</span>
+      </article>
+
+      <article class="service">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        </div>
+        <h3>Social & Meta Ads</h3>
+        <p>Full-funnel Meta Ads, social media handling and performance marketing — measurable growth, every month.</p>
+        <span class="service-num">02</span>
+      </article>
+
+      <article class="service">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/><path d="M11 7v8M7 11h8"/></svg>
+        </div>
+        <h3>SEO & Organic Growth</h3>
+        <p>Technical SEO, on-page optimisation, schema and local SEO — traffic that compounds long after the ads turn off.</p>
+        <span class="service-num">03</span>
+      </article>
+
+      <article class="service">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/></svg>
+        </div>
+        <h3>Brand & Packaging</h3>
+        <p>Logos, identity systems and shelf-ready packaging — built to be recognised across every surface.</p>
+        <span class="service-num">04</span>
+      </article>
+    </div>
+
+    <a href="services.html" class="section-link">See all 8 services <span>→</span></a>
+  </section>
+
+  <!-- ============ WORK TEASER ============ -->
+  <section class="section work">
+    <div class="section-head">
+      <span class="kicker">// Selected work</span>
+      <h2>Built, launched<br /><span class="grad">and growing.</span></h2>
+      <p>A handful of products we've shipped — websites, brands and full-funnel campaigns for businesses across travel, retail and lifestyle.</p>
+    </div>
+
+    <div class="work-grid">
+      <a class="work-card" href="https://www.easytravel.co.tz/" target="_blank" rel="noopener noreferrer">
+        <div class="work-frame">
+          <div class="frame-bar">
+            <span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span>
+            <div class="frame-url">easytravel.co.tz</div>
+          </div>
+          <div class="frame-screen frame-travel">
+            <img loading="lazy" src="https://image.thum.io/get/width/1200/crop/800/https://www.easytravel.co.tz/" alt="Easy Travel — Tanzania safari & tourism" onerror="this.style.display='none'" />
+          </div>
+        </div>
+        <div class="work-meta">
+          <div class="work-tags"><span>Travel · Tourism</span><span>Web Development</span></div>
+          <h3>Easy Travel <span class="arrow">↗</span></h3>
+          <p>A premium safari & tourism platform for one of Tanzania's leading travel brands.</p>
+        </div>
+      </a>
+
+      <a class="work-card" href="https://petshopinpune.com/" target="_blank" rel="noopener noreferrer">
+        <div class="work-frame">
+          <div class="frame-bar">
+            <span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span>
+            <div class="frame-url">petshopinpune.com</div>
+          </div>
+          <div class="frame-screen frame-pet">
+            <img loading="lazy" src="https://image.thum.io/get/width/1200/crop/800/https://petshopinpune.com/" alt="Pet Shop in Pune — online pet supplies" onerror="this.style.display='none'" />
+          </div>
+        </div>
+        <div class="work-meta">
+          <div class="work-tags"><span>E-commerce</span><span>D2C · Pets</span></div>
+          <h3>Pet Shop in Pune <span class="arrow">↗</span></h3>
+          <p>Full e-commerce store for one of Pune's largest pet supply businesses.</p>
+        </div>
+      </a>
+
+      <a class="work-card" href="https://get-nothin.com/" target="_blank" rel="noopener noreferrer">
+        <div class="work-frame">
+          <div class="frame-bar">
+            <span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span>
+            <div class="frame-url">get-nothin.com</div>
+          </div>
+          <div class="frame-screen frame-nothin">
+            <img loading="lazy" src="https://image.thum.io/get/width/1200/crop/800/https://get-nothin.com/" alt="Get Nothin — lifestyle D2C brand" onerror="this.style.display='none'" />
+          </div>
+        </div>
+        <div class="work-meta">
+          <div class="work-tags"><span>D2C Brand</span><span>Lifestyle · Retail</span></div>
+          <h3>Get Nothin <span class="arrow">↗</span></h3>
+          <p>A clean, modern storefront for a homegrown lifestyle label.</p>
+        </div>
+      </a>
+    </div>
+
+    <a href="portfolio.html" class="section-link">See full portfolio (including Meta Ads case studies) <span>→</span></a>
+  </section>
+
+  <!-- ============ BRANDS STRIP (homepage) ============ -->
+  <section class="section brands brands-home">
+    <div class="section-head center">
+      <span class="kicker">// Trusted by</span>
+      <h2>28+ brands shipped<br /><span class="grad">in six months.</span></h2>
+      <p>Real estate, wellness, hospitality, exports, fashion — a slice of who we work with.</p>
+    </div>
+    <div class="brands-grid brands-logo-grid">
+      <a class="brand-tile" href="https://devantaexports.com/" target="_blank" rel="noopener">
+        <span class="brand-logo-wrap">
+          <img src="https://www.google.com/s2/favicons?domain=devantaexports.com&sz=128" alt="Devanta Exports" loading="lazy" onerror="this.classList.add('failed')" />
+          <span class="brand-mono" style="--bc:#B45309">DE</span>
+        </span>
+        <span>Devanta Exports</span>
+      </a>
+      <a class="brand-tile" href="https://get-nothin.com/" target="_blank" rel="noopener">
+        <span class="brand-logo-wrap">
+          <img src="https://www.google.com/s2/favicons?domain=get-nothin.com&sz=128" alt="Get Nothin" loading="lazy" onerror="this.classList.add('failed')" />
+          <span class="brand-mono" style="--bc:#0F172A">GN</span>
+        </span>
+        <span>Get Nothin</span>
+      </a>
+      <a class="brand-tile" href="https://www.easytravel.co.tz/" target="_blank" rel="noopener">
+        <span class="brand-logo-wrap">
+          <img src="https://www.google.com/s2/favicons?domain=easytravel.co.tz&sz=128" alt="Easy Travels" loading="lazy" onerror="this.classList.add('failed')" />
+          <span class="brand-mono" style="--bc:#F59E0B">ET</span>
+        </span>
+        <span>Easy Travels</span>
+      </a>
+      <a class="brand-tile" href="https://petshopinpune.com/" target="_blank" rel="noopener">
+        <span class="brand-logo-wrap">
+          <img src="https://www.google.com/s2/favicons?domain=petshopinpune.com&sz=128" alt="Pet Shop in Pune" loading="lazy" onerror="this.classList.add('failed')" />
+          <span class="brand-mono" style="--bc:#EA580C">PP</span>
+        </span>
+        <span>Pet Shop in Pune</span>
+      </a>
+      <div class="brand-tile brand-tile-more">
+        <span class="brand-logo-wrap">
+          <span class="brand-mono" style="--bc:#6366F1">+</span>
+        </span>
+        <span>& many more</span>
+      </div>
+    </div>
+    <a href="portfolio.html" class="section-link">See our work <span>→</span></a>
+  </section>
+
+  <!-- ============ TEAM TEASER ============ -->
+  <section class="section team">
+    <div class="section-head center">
+      <span class="kicker">// The team</span>
+      <h2>The minds behind<br /><span class="grad">AMH Solutions.</span></h2>
+      <p>A small, focused crew working as one team on every project we ship.</p>
+    </div>
+
+    <div class="team-grid">
+      <article class="member">
+        <div class="member-avatar" style="--ag1:#3B82F6; --ag2:#4F46E5">AT</div>
+        <h3>Aniket Singh Thakur</h3>
+      </article>
+      <article class="member">
+        <div class="member-avatar" style="--ag1:#22D3EE; --ag2:#3B82F6">HA</div>
+        <h3>Harsh Ahirrao</h3>
+      </article>
+      <article class="member">
+        <div class="member-avatar" style="--ag1:#4F46E5; --ag2:#8B5CF6">MS</div>
+        <h3>Manav Singh</h3>
+      </article>
+      <article class="member">
+        <div class="member-avatar" style="--ag1:#60A5FA; --ag2:#22D3EE">HB</div>
+        <h3>Hrishi Badgujar</h3>
+      </article>
+    </div>
+
+    <a href="about.html" class="section-link">More about us <span>→</span></a>
+  </section>
+
+  <!-- ============ CTA STRIP ============ -->
+  <section class="section home-cta">
+    <div class="home-cta-inner">
+      <span class="kicker">// Let's build</span>
+      <h2>Have an idea?<br /><span class="grad">Let's ship it.</span></h2>
+      <p>Tell us a little about your project. We'll get back to you within one business day with a clear plan and a fair quote.</p>
+      <div class="home-cta-actions">
+        <a href="contact.html" class="btn btn-primary">Start a project <span>→</span></a>
+        <a href="portfolio.html" class="btn btn-ghost">View our work</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="logo-mark">
+          <img src="assets/amh-logo.svg" alt="AMH Solutions" />
+        </span>
+        <div>
+          <strong>AMH Solutions</strong>
+          <span>A bridge that connects your business with technology</span>
+        </div>
+      </div>
+      <div class="footer-cols">
+        <div>
+          <h5>Pages</h5>
+          <a href="services.html">Services</a>
+          <a href="portfolio.html">Portfolio</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div>
+          <h5>Services</h5>
+          <a href="services.html">Web Development</a>
+          <a href="services.html">Custom Software</a>
+          <a href="services.html">Meta Ads & Social</a>
+          <a href="services.html">Branding</a>
+        </div>
+        <div>
+          <h5>Connect</h5>
+          <a href="mailto:hello@amhsolutions.com">Email</a>
+          <a href="#">LinkedIn</a>
+          <a href="#">Instagram</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 AMH Solutions. All rights reserved.</span>
+      <span>Built with care.</span>
+    </div>
+  </footer>
+
+  <!-- GSAP + Lenis -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.0.45/dist/lenis.min.js"></script>
+  <script src="script.js"></script>
+  <script src="/dynamic.js" defer></script>
+</body>
+</html>

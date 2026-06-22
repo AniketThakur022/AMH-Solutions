@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — AMH Solutions</title>
+  <meta name="description" content="Start a project with AMH Solutions. Tell us about your idea and we'll come back inside one business day with a clear plan and a fair quote." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.158.0/three.min.js"></script>
+</head>
+<body>
+
+  <canvas id="bgcanvas"></canvas>
+  <div class="bg-grain" aria-hidden="true"></div>
+  <div class="bg-vignette" aria-hidden="true"></div>
+
+  <!-- ============ NAV ============ -->
+  <nav class="nav" id="nav">
+    <a href="index.html" class="logo">
+      <span class="logo-mark">
+        <img src="assets/amh-logo.svg" alt="AMH Solutions" />
+      </span>
+      <span class="logo-text">AMH<span>Solutions</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="services.html">Services</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" class="is-active">Contact</a></li>
+    </ul>
+    <div class="nav-signin" id="navSignin">
+      <button class="nav-signin-btn" type="button" aria-haspopup="true" aria-expanded="false">
+        Sign in <span class="caret" aria-hidden="true">▾</span>
+      </button>
+      <div class="nav-signin-menu" role="menu">
+        <a href="/admin/login.html" role="menuitem">
+          <strong>Admin sign in</strong>
+          <span>Manage portfolio, clients &amp; projects</span>
+        </a>
+        <a href="/client/login.html" role="menuitem">
+          <strong>Client sign in</strong>
+          <span>View your projects &amp; deliverables</span>
+        </a>
+      </div>
+    </div>
+    <a href="contact.html" class="nav-cta">Start a project →</a>
+    <button class="nav-burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <span class="kicker">// Contact</span>
+      <h1 class="page-hero-title">
+        Got an idea?<br />
+        <span class="grad">Let's ship it.</span>
+      </h1>
+      <p class="page-hero-sub">
+        Tell us a little about your project. We'll come back inside one business day with a clear plan and a fair quote — no fluff, no follow-up loops.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="section contact">
+    <div class="contact-inner">
+      <div class="contact-left">
+        <span class="kicker">// Get in touch</span>
+        <h2>Three ways<br /><span class="grad">to reach us.</span></h2>
+        <p>Send a brief, drop us an email, or just say hi. We read everything.</p>
+        <ul class="contact-list">
+          <li><strong>Email</strong><a href="mailto:hello@amhsolutions.com">hello@amhsolutions.com</a></li>
+          <li><strong>Hours</strong><span>Mon — Sat · 10am – 7pm IST</span></li>
+          <li><strong>Studio</strong><span>Wagholi, Pune · Working globally</span></li>
+          <li><strong>Response time</strong><span>Within one business day</span></li>
+        </ul>
+      </div>
+
+      <form class="contact-form" id="contactForm" onsubmit="return false;">
+        <div class="field">
+          <label>Name</label>
+          <input type="text" name="name" placeholder="Your full name" required />
+        </div>
+        <div class="field">
+          <label>Email</label>
+          <input type="email" name="email" placeholder="you@company.com" required />
+        </div>
+        <div class="field">
+          <label>What do you need?</label>
+          <select name="service" required>
+            <option value="">Choose a service…</option>
+            <option>Full-Stack Web Development</option>
+            <option>Custom Software</option>
+            <option>Technical Solutions</option>
+            <option>Complete IT Solutions</option>
+            <option>Social Media Handling</option>
+            <option>Logo & Brand Identity</option>
+            <option>Packaging & Labelling Design</option>
+            <option>Meta Ads / Performance Marketing</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Tell us about it</label>
+          <textarea name="message" rows="5" placeholder="A few lines about your project, timeline and budget…"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Send message <span>→</span></button>
+        <p class="form-success" id="formSuccess">Thanks — we'll be in touch shortly.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="logo-mark">
+          <img src="assets/amh-logo.svg" alt="AMH Solutions" />
+        </span>
+        <div>
+          <strong>AMH Solutions</strong>
+          <span>A bridge that connects your business with technology</span>
+        </div>
+      </div>
+      <div class="footer-cols">
+        <div>
+          <h5>Pages</h5>
+          <a href="services.html">Services</a>
+          <a href="portfolio.html">Portfolio</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div>
+          <h5>Services</h5>
+          <a href="services.html">Web Development</a>
+          <a href="services.html">Custom Software</a>
+          <a href="services.html">Meta Ads & Social</a>
+          <a href="services.html">Branding</a>
+        </div>
+        <div>
+          <h5>Connect</h5>
+          <a href="mailto:hello@amhsolutions.com">Email</a>
+          <a href="#">LinkedIn</a>
+          <a href="#">Instagram</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 AMH Solutions. All rights reserved.</span>
+      <span>Built with care.</span>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.0.45/dist/lenis.min.js"></script>
+  <script src="script.js"></script>
+  <script src="/dynamic.js" defer></script>
+</body>
+</html>
