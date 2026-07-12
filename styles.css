@@ -2128,3 +2128,44 @@ body.is-portfolio .section { padding-top: 100px; padding-bottom: 100px; }
   .port-hero-stats > div:nth-child(2n) { border-right: none; }
   .port-cta { padding: 80px 22px; }
 }
+
+/* ====================================================
+   PERF-LITE — low-power / touch / reduced-motion devices
+   Kills the GPU-heavy work (WebGL shader is disabled in JS)
+   and swaps frosted-glass blur for opaque surfaces so
+   low-end Android scrolls smoothly. The static gradient in
+   body::before becomes the visible backdrop.
+   ==================================================== */
+
+/* Hide the (now-unrendered) shader canvas so it can't paint. */
+.perf-lite #bgcanvas { display: none !important; }
+
+/* Richer static backdrop to stand in for the animated aurora. */
+.perf-lite body::before {
+  background:
+    radial-gradient(900px 720px at 12% 0%,   rgba(59, 130, 246, 0.15), transparent 60%),
+    radial-gradient(820px 720px at 92% 5%,    rgba(79, 70, 229, 0.15), transparent 62%),
+    radial-gradient(760px 900px at 50% 112%,  rgba(34, 211, 238, 0.07), transparent 60%),
+    #050B1E;
+}
+
+/* backdrop-filter (14 of them) is the costliest per-frame paint on low-end
+   GPUs. Drop it everywhere and lean on opaque backgrounds instead. */
+.perf-lite *,
+.perf-lite *::before,
+.perf-lite *::after {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* The nav overlays scrolling content, so give it a solid, legible fill now
+   that the blur is gone. */
+.perf-lite .nav { background: rgba(6, 12, 32, 0.92); }
+.perf-lite .nav.scrolled { background: rgba(6, 12, 32, 0.97); }
+
+/* mix-blend-mode compositing is expensive; the grain adds little on mobile. */
+.perf-lite .bg-grain { display: none; }
+
+/* Safety net: if any split-text spans exist, keep them fully visible
+   (JS skips splitting on lite, but this guards the reveal state too). */
+.perf-lite .split-char { transform: none !important; opacity: 1 !important; }

@@ -4,6 +4,29 @@
 
 gsap.registerPlugin(ScrollTrigger);
 
+/* ====================================================
+   DEVICE CAPABILITY TIER — perf gate for low-end devices
+   "lite" = touch-first / low-memory / low-core / reduced-motion.
+   On lite we skip the GPU-heavy WebGL shader, JS smooth-scroll,
+   scroll-reveal, split-text and page transitions, and fall back
+   to a static gradient backdrop + native scrolling. This is what
+   fixes the lag on low-end Android while keeping the full
+   experience on desktop and high-end phones.
+   ==================================================== */
+const PERF = (() => {
+  const mm = (q) => typeof window.matchMedia === 'function' && window.matchMedia(q).matches;
+  const reduced = mm('(prefers-reduced-motion: reduce)');
+  const coarse  = mm('(pointer: coarse)');   // phones / touch tablets
+  const noHover = mm('(hover: none)');
+  const mem   = navigator.deviceMemory || 8;         // GB (Chrome; undefined elsewhere → 8)
+  const cores = navigator.hardwareConcurrency || 8;
+  const lite = reduced || coarse || noHover || mem <= 4 || cores <= 4;
+  const root = document.documentElement;
+  root.classList.toggle('perf-lite', lite);
+  if (reduced) root.classList.add('perf-reduced');
+  return { lite, reduced, coarse };
+})();
+
 /* ---------- Nav scroll state ---------- */
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
@@ -29,12 +52,14 @@ burger?.addEventListener('click', () => {
 });
 
 /* ---------- Hero entry (non-title elements; title handled by split-text reveal) ---------- */
-const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' }, delay: 0.4 });
-heroTl
-  .from('.hero-tag', { y: 20, opacity: 0, duration: 0.7 })
-  .from('.hero-sub', { y: 20, opacity: 0, duration: 0.8 }, '+=0.45')
-  .from('.hero-cta .btn', { y: 20, opacity: 0, duration: 0.6, stagger: 0.1 }, '-=0.45')
-  .from('.hero-stats > div', { y: 30, opacity: 0, duration: 0.6, stagger: 0.08 }, '-=0.35');
+if (!PERF.reduced) {
+  const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' }, delay: 0.4 });
+  heroTl
+    .from('.hero-tag', { y: 20, opacity: 0, duration: 0.7 })
+    .from('.hero-sub', { y: 20, opacity: 0, duration: 0.8 }, '+=0.45')
+    .from('.hero-cta .btn', { y: 20, opacity: 0, duration: 0.6, stagger: 0.1 }, '-=0.45')
+    .from('.hero-stats > div', { y: 30, opacity: 0, duration: 0.6, stagger: 0.08 }, '-=0.35');
+}
 
 /* ---------- Counters ---------- */
 document.querySelectorAll('.hero-stats strong').forEach(el => {
@@ -56,16 +81,18 @@ document.querySelectorAll('.hero-stats strong').forEach(el => {
   });
 });
 
-/* ---------- Section reveal ---------- */
-gsap.utils.toArray('.section-head, .service, .why-card, .step, .contact-form, .contact-list li, .work-card, .mkt-card, .member, .marketing-head, .case-head, .case-feature, .case-card-small, .dash-card, .brands-grid span, .brands-grid .brand-tile, .beyond-card, .tools-row').forEach(el => {
-  gsap.from(el, {
-    scrollTrigger: { trigger: el, start: 'top 88%' },
-    y: 40,
-    opacity: 0,
-    duration: 0.9,
-    ease: 'power3.out'
+/* ---------- Section reveal (desktop / high-end only) ---------- */
+if (!PERF.lite) {
+  gsap.utils.toArray('.section-head, .service, .why-card, .step, .contact-form, .contact-list li, .work-card, .mkt-card, .member, .marketing-head, .case-head, .case-feature, .case-card-small, .dash-card, .brands-grid span, .brands-grid .brand-tile, .beyond-card, .tools-row').forEach(el => {
+    gsap.from(el, {
+      scrollTrigger: { trigger: el, start: 'top 88%' },
+      y: 40,
+      opacity: 0,
+      duration: 0.9,
+      ease: 'power3.out'
+    });
   });
-});
+}
 
 /* ---------- Service hover spotlight ---------- */
 document.querySelectorAll('.service').forEach(card => {
@@ -105,6 +132,9 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 (function () {
   const canvas = document.getElementById('bgcanvas');
   if (!canvas || typeof THREE === 'undefined') return;
+  // Low-end / touch devices: skip the full-screen fragment shader entirely.
+  // The static gradient backdrop (body::before) stands in — no lag, no battery drain.
+  if (PERF.lite) return;
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: false, alpha: true });
@@ -295,6 +325,10 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
    ==================================================== */
 (function () {
   if (typeof Lenis === 'undefined') return;
+  // JS-driven smooth scroll fights the compositor on low-end Android (syncTouch
+  // re-runs a rAF loop on every touch move). Use the browser's native momentum
+  // scrolling there instead — it's GPU-accelerated and far smoother.
+  if (PERF.lite) return;
   // Tuned for Linear/Vercel-grade feel: low lerp, longer momentum, mouse + touch both smoothed
   const lenis = new Lenis({
     lerp: 0.075,             // lower = silkier inertia (sweet spot between glide and lag)
@@ -406,6 +440,9 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
    3) PAGE TRANSITION OVERLAY — curtain wipe (Vercel/agency)
    ==================================================== */
 (function () {
+  // Skip the curtain-wipe on lite devices: it adds a full-screen animated
+  // layer and delays every navigation by ~620ms, which reads as sluggishness.
+  if (PERF.lite) return;
   const overlay = document.createElement('div');
   overlay.className = 'page-transition';
   document.body.appendChild(overlay);
@@ -481,6 +518,10 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
       }
     });
   }
+
+  // On lite devices, don't shatter headings into per-character spans (hundreds of
+  // extra DOM nodes, each with its own transition). Leave the text as-is — visible.
+  if (PERF.lite) return;
 
   const heroTargets = document.querySelectorAll('.hero-title, .page-hero-title, .port-hero-title');
   heroTargets.forEach(t => splitInto(t, { i: 0 }));
