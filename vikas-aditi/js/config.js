@@ -3,9 +3,10 @@
 
    • Anything left as ""  is shown on the page as "To be announced"
      or is hidden, so nothing made-up ever appears on the invitation.
-   • Photo values are the IMG_ numbers from the shared Drive folder
+   • Photo values are the photo numbers from the shared Drive folders
      (files live in assets/photos/<number>-800.webp / -1400.webp).
-     All 50 photos from the folder are available, so any number works.
+     Available: all 50 pre-wedding photos (IMG_8841 … IMG_9023) and 16
+     picked from the 455 ring-ceremony photos (DSC06826 … DSC07455).
    • If the names change, also update the <title> and og: tags at the
      top of index.html (link previews cannot read this file).
    ===================================================================== */
@@ -13,8 +14,8 @@ window.WEDDING = {
 
   /* ---------- The couple (shown in this order everywhere) ---------- */
   couple: {
-    first:  { name: "Vikas", role: "The Groom", parents: "", photo: "8995" },
-    second: { name: "Aditi", role: "The Bride", parents: "Daughter of Mr. Pranay Thakur & Mrs. Ritu Singh", photo: "8998" }
+    first:  { name: "Vikas", role: "The Groom", parents: "", photo: "6923" },
+    second: { name: "Aditi", role: "The Bride", parents: "Daughter of Mr. Pranay Thakur & Mrs. Ritu Singh", photo: "6826" }
     // parents example:  "Son of Mr. … & Mrs. …"
   },
 
@@ -50,19 +51,22 @@ window.WEDDING = {
   rsvp: { whatsapp: "", contactName: "" },
 
   /* ---------- Photos ---------- */
-  heroPhotos:   ["9018", "9001", "9020"],
+  heroPhotos:   ["9018", "6905", "9001", "9020"],
   invitePhoto:  "9014",
   // photo behind the quote / the closing note: tall one for phones, wide one for laptops
   quotePhoto:   { tall: "9006", wide: "9003" },
   closingPhoto: { tall: "8859", wide: "9021" },
   // landscape photos (so the gallery can give them a wide tile)
-  widePhotos:   ["9003", "9004", "9021"],
+  widePhotos:   ["9003", "9004", "9021", "7010", "7154", "7160"],
 
+  // layout: "grid" | "coverflow" | "ribbon".   note: small line under the title ("" to hide)
   gallery: [
+    { title: "The Ring Ceremony",      layout: "grid", note: "8 July 2026",
+      photos: ["7010", "6912", "7392", "7154", "6884", "6928", "7402", "7403", "7160", "7443", "7455", "6902", "7447"] },
     { title: "Whispers of the Woods",  layout: "coverflow",
       photos: ["8856", "8842", "8843", "8845", "8846", "8847", "8851", "8855", "8858", "8849", "8860"] },
     { title: "Golden Hour by the Sea", layout: "ribbon",
-      photos: ["8993", "8999", "9005", "9010", "9012", "8994", "9002", "9007", "9011", "8996"] },
+      photos: ["8993", "8999", "9005", "9010", "9012", "8998", "8994", "9002", "9007", "9011", "8996", "8995"] },
     { title: "Rooted in Tradition",    layout: "grid",
       photos: ["9015", "9016", "9017", "9019", "9021", "9022", "9023"] }
   ],

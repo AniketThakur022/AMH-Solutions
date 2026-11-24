@@ -403,7 +403,9 @@
     }
     return '<div class="chapter">' +
       '<div class="chapter__head" data-reveal><span class="chapter__no">' + (ci < 9 ? '0' : '') + (ci + 1) + '</span>' +
-      '<h3 class="chapter__title">' + esc(ch.title || '') + '</h3></div>' + body + '</div>';
+      '<h3 class="chapter__title">' + esc(ch.title || '') + '</h3></div>' +
+      (ch.note ? '<p class="chapter__note" data-reveal>' + esc(ch.note) + '</p>' : '') +
+      body + '</div>';
   }).join('');
 
   /* coverflow: scale / tilt cards by their distance from centre */
