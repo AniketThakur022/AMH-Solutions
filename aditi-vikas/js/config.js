@@ -25,10 +25,10 @@ window.WEDDING = {
 
   /* ---------- Main wedding date ----------
      Date only      → "2026-12-09"                 (countdown runs to the start of that day, India time)
-     Date + time    → "2026-12-09T19:00:00+05:30"  (countdown runs to that exact time)
+     Date + time    → "2026-12-09T20:00:00+05:30"  (countdown runs to that exact time; +05:30 = India)
      The year was not stated — 2026 is assumed. Change it here if needed.  */
-  date: "2026-12-09",
-  timeText: "Evening",            // shown next to the date while no exact time is set ("" to hide)
+  date: "2026-12-09T20:00:00+05:30",
+  timeText: "8 PM onwards",       // wording shown next to the date; "" shows the clock time from `date` instead
   city: "",                       // e.g. "Mumbai" — shown under the date
 
   /* ---------- Main venue (section is hidden while name is "") ---------- */
@@ -45,10 +45,10 @@ window.WEDDING = {
      venue / mapUrl left "" → card shows "Venue to be announced".
      note: a short tagline — reword or set to "" to remove.            */
   events: [
-    { icon: "haldi",    name: "Haldi",    note: "A splash of turmeric, laughter and blessings.", date: "2026-12-07", time: "",                venue: "", mapUrl: "" },
-    { icon: "carnival", name: "Carnival", note: "Fun, games and laughter with family and friends.", date: "2026-12-08", time: "Morning to noon", venue: "", mapUrl: "" },
-    { icon: "mehndi",   name: "Mehndi",   note: "Henna, music and the colours of celebration.",  date: "2026-12-08", time: "Evening",         venue: "", mapUrl: "" },
-    { icon: "wedding",  name: "Wedding",  note: "Two families become one.",                      date: "2026-12-09", time: "Evening",         venue: "Chawla Greens, Khaira", mapUrl: "https://maps.app.goo.gl/gfQuq8wy382hPCR86" }
+    { icon: "mehndi",   name: "Mehndi",   note: "Henna, music and the colours of celebration.",     date: "2026-12-07", time: "Evening", venue: "At Residence",          mapUrl: "" },
+    { icon: "carnival", name: "Carnival", note: "Fun, games and laughter with family and friends.", date: "2026-12-08", time: "12 PM onwards", venue: "Chawla Greens, Khaira", mapUrl: "https://maps.app.goo.gl/gfQuq8wy382hPCR86" },
+    { icon: "sangeet",  name: "Sangeet",  note: "An evening of song, dance and family.",            date: "2026-12-08", time: "8 PM onwards",  venue: "Chawla Greens, Khaira", mapUrl: "https://maps.app.goo.gl/gfQuq8wy382hPCR86" },
+    { icon: "wedding",  name: "Wedding",  note: "Two families become one.",                         date: "2026-12-09", time: "8 PM onwards",  venue: "Chawla Greens, Khaira", mapUrl: "https://maps.app.goo.gl/gfQuq8wy382hPCR86" }
   ],
 
   /* ---------- RSVP (button is hidden while whatsapp is "") ----------
@@ -71,7 +71,7 @@ window.WEDDING = {
     "",
     "✨ *Aditi* with *Vikas* ✨",
     "",
-    "🗓️ *Wednesday, 9 December 2026*",
+    "🗓️ *Wednesday, 9 December 2026 · 8 PM onwards*",
     "Celebrations begin on 7 December",
     "📍 *Chawla Greens, Khaira, Chhattisgarh*",
     "",

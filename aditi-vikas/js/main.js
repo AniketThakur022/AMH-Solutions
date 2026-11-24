@@ -118,8 +118,8 @@
     '<span class="amp">&amp;</span>' +
     '<span class="n n--2">' + esc(B.name) + '</span>';
   var hasTime = /T\d{2}:\d{2}/.test(String(W.date || ''));
-  // exact time when one is set, otherwise the loose text from config ("Evening")
-  var whenText = weddingDate ? (hasTime ? fmtTime(weddingDate) : (W.timeText || '')) : '';
+  // the wording from config ("8 PM onwards") if given, otherwise the clock time when the date has one
+  var whenText = weddingDate ? (W.timeText || (hasTime ? fmtTime(weddingDate) : '')) : '';
   $('#heroDate').textContent = weddingDate
     ? fmtDate(weddingDate, { day: 'numeric', month: 'long', year: 'numeric' })
     : 'Date to be announced';
@@ -312,7 +312,8 @@
       var parsed = parseDate(d.length === 10 ? d + 'T12:00:00+05:30' : d);
       if (parsed) d = fmtDate(parsed, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
     }
-    return [d, e.time].filter(Boolean).join(' · ');
+    // the time stays on one line ("8 PM onwards" never splits); the date may wrap on narrow phones
+    return [d ? esc(d) : '', e.time ? '<span class="nw">' + esc(e.time) + '</span>' : ''].filter(Boolean).join(' · ');
   }
   var events = W.events || [];
   var timeline = $('#timeline');
@@ -326,7 +327,7 @@
           '<h3 class="event__name">' + esc(e.name) + '</h3>' +
           (e.note ? '<p class="event__note">' + esc(e.note) + '</p>' : '') +
           '<div class="event__meta">' +
-          '<p class="event__row' + (when ? '' : ' is-tba') + '">' + I_CAL + '<span>' + esc(when || 'Date & time to be announced') + '</span></p>' +
+          '<p class="event__row' + (when ? '' : ' is-tba') + '">' + I_CAL + '<span>' + (when || 'Date &amp; time to be announced') + '</span></p>' +
           '<p class="event__row' + (e.venue ? '' : ' is-tba') + '">' + I_PIN + '<span>' + esc(e.venue || 'Venue to be announced') + '</span></p>' +
           (e.mapUrl ? '<p><a class="event__map" href="' + esc(e.mapUrl) + '" target="_blank" rel="noopener">View on map →</a></p>' : '') +
           '</div></div></li>';
