@@ -50,6 +50,34 @@ window.WEDDING = {
      whatsapp: country code + number, digits only, e.g. "919876543210" */
   rsvp: { whatsapp: "", contactName: "" },
 
+  /* ---------- Personal invitations ----------
+     A link ending in  ?to=Sharma%20Family  shows that name on the cover,
+     above the "Open Invitation" button. The easy way to make such links
+     and send them is the helper page:  …/vikas-aditi/send.html          */
+  guestLabel: "A special invitation for",
+
+  /* The WhatsApp message offered by send.html.
+     {name} = the family's name   {link} = their personal link
+     *stars* make text bold in WhatsApp.                                 */
+  whatsappMessage: [
+    "🙏 Namaste {name} 🙏",
+    "",
+    "With the blessings of our elders, we joyfully invite you and your family to the wedding of our daughter",
+    "",
+    "✨ *Aditi* with *Vikas* ✨",
+    "",
+    "🗓️ *Wednesday, 9 December 2026*",
+    "Celebrations begin on 7 December",
+    "",
+    "💌 Your invitation is here:",
+    "{link}",
+    "",
+    "Your presence and blessings will mean the world to us.",
+    "",
+    "With warm regards,",
+    "*Pranay Thakur & Ritu Singh*"
+  ].join("\n"),
+
   /* ---------- Photos ---------- */
   heroPhotos:   ["9018", "6905", "9001", "9020"],
   invitePhoto:  "9014",

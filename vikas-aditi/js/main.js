@@ -95,6 +95,17 @@
   });
   if (NAMES) doc.title = NAMES + ' — Wedding Invitation';
 
+  /* ---------- personal greeting on the cover:  …/vikas-aditi/?to=Sharma%20Family ----------
+     The name is shown as plain text only, tidied and capped at 60 characters. */
+  var guestName = '';
+  try { guestName = new URLSearchParams(location.search).get('to') || ''; } catch (e) { guestName = ''; }
+  guestName = guestName.replace(/[\u0000-\u001f\u007f<>]/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 60);
+  if (guestName) {
+    $('#gateGuestLabel').textContent = W.guestLabel || 'A special invitation for';
+    $('#gateGuestName').textContent = guestName;
+    $('#gateGuest').hidden = false;
+  }
+
   $$('.divider path').forEach(function (p) { p.setAttribute('pathLength', '1'); });
 
   /* =====================================================================
