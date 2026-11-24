@@ -516,8 +516,20 @@
   /* =====================================================================
      FILMS
      ===================================================================== */
+  /* background music: plays only when the guest wants it, no film is playing and the page is on screen */
   var audio = null;
   var musicBtn = $('#musicBtn');
+  var musicWanted = false;
+  var filmSounding = false;
+  function musicUpdate() {
+    if (!audio) return;
+    if (musicWanted && !filmSounding && !doc.hidden) {
+      var p = audio.play();
+      if (p && p.catch) p.catch(function () {});
+    } else {
+      audio.pause();
+    }
+  }
   var films = W.films || [];
   var filmsEl = $('#films');
   if (films.length) {
@@ -572,7 +584,11 @@
       filmTeaser.pause();
       filmTeaser.replaceWith(filmMain);
       filmBox.classList.add('is-playing');
-      if (audio && !audio.paused) { audio.pause(); musicBtn.setAttribute('aria-pressed', 'false'); }
+      // the music steps aside while a film has sound, and comes back when it stops
+      filmMain.addEventListener('play', function () { filmSounding = true; musicUpdate(); });
+      ['pause', 'ended'].forEach(function (ev) {
+        filmMain.addEventListener(ev, function () { filmSounding = false; musicUpdate(); });
+      });
       if (multi) {
         // when one film ends, line up the next one
         filmMain.addEventListener('ended', function () { showFilm((filmCur + 1) % films.length, false); });
@@ -587,6 +603,8 @@
         filmMain.removeAttribute('src');
         filmMain.load();
         filmMain = null;
+        filmSounding = false;
+        musicUpdate();
       }
       filmCur = i;
       filmBox.classList.remove('is-playing');
@@ -643,15 +661,19 @@
     audio = new Audio(W.music);
     audio.loop = true;
     audio.preload = 'none';
+    audio.volume = 0.85;   // iPhones ignore this, so the file itself is also mastered a little quieter
     musicBtn.hidden = false;
-    musicBtn.addEventListener('click', function () {
-      if (audio.paused) {
-        audio.play().then(function () { musicBtn.setAttribute('aria-pressed', 'true'); }, function () {});
-      } else {
-        audio.pause();
-        musicBtn.setAttribute('aria-pressed', 'false');
-      }
+    // the button's animated bars follow what is actually audible
+    ['play', 'pause'].forEach(function (ev) {
+      audio.addEventListener(ev, function () { musicBtn.setAttribute('aria-pressed', audio.paused ? 'false' : 'true'); });
     });
+    musicBtn.addEventListener('click', function () {
+      musicWanted = audio.paused;
+      // turning the music on while a film is playing pauses the film, so the two never overlap
+      if (musicWanted && filmSounding) $$('.film video').forEach(function (v) { if (v.controls) v.pause(); });
+      musicUpdate();
+    });
+    doc.addEventListener('visibilitychange', musicUpdate);   // silent when the guest switches apps
   }
 
   /* =====================================================================
@@ -921,9 +943,8 @@
     }
     petals.burst(window.innerWidth < 700 ? 38 : 70);
     startHero();
-    if (audio) {
-      audio.play().then(function () { musicBtn.setAttribute('aria-pressed', 'true'); }, function () {});
-    }
+    musicWanted = true;            // the opening tap is the gesture browsers need before sound may start
+    musicUpdate();
   }
   $('#openBtn').addEventListener('click', function () { openGate(false); });
   gate.addEventListener('click', function (e) {
@@ -931,6 +952,21 @@
     if (!(e.target.closest && e.target.closest('#openBtn'))) openGate(false);
   });
   if (/[?&]skipintro\b/.test(location.search)) openGate(true);
+
+  /* a photo that fails to load (patchy mobile data, a momentary server hiccup) gets two more tries */
+  doc.addEventListener('error', function (e) {
+    var im = e.target;
+    if (!im || im.tagName !== 'IMG' || !im.getAttribute('src')) return;
+    var tries = parseInt(im.getAttribute('data-retry') || '0', 10);
+    if (tries >= 2) return;
+    im.setAttribute('data-retry', String(tries + 1));
+    setTimeout(function () {
+      var src = im.getAttribute('src');
+      var set = im.getAttribute('srcset');
+      if (set) { im.removeAttribute('srcset'); im.setAttribute('srcset', set); }
+      im.src = src;                              // assigning again starts a fresh request
+    }, 1500 * (tries + 1));
+  }, true);
 
   /* a tap on any empty spot scatters a few petals */
   doc.addEventListener('pointerdown', function (e) {
