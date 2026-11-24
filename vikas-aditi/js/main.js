@@ -661,7 +661,7 @@
     audio = new Audio(W.music);
     audio.loop = true;
     audio.preload = 'none';
-    audio.volume = 0.6;
+    audio.volume = 0.85;   // iPhones ignore this, so the file itself is also mastered a little quieter
     musicBtn.hidden = false;
     // the button's animated bars follow what is actually audible
     ['play', 'pause'].forEach(function (ev) {

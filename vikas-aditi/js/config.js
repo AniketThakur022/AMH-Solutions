@@ -94,5 +94,5 @@ window.WEDDING = {
      It starts when the guest opens the cover, loops quietly, steps aside
      while a film plays and stops when they leave the page. A music on/off
      button appears only when this is filled in.                        */
-  music: ""
+  music: "assets/music.mp3"
 };
