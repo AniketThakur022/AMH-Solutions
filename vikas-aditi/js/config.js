@@ -14,7 +14,7 @@ window.WEDDING = {
 
   /* ---------- The couple (shown in this order everywhere) ---------- */
   couple: {
-    first:  { name: "Vikas", role: "The Groom", parents: "", photo: "6923" },
+    first:  { name: "Vikas", role: "The Groom", parents: "Son of Mr. Barun Kumar & Mrs. Neelam Singh", photo: "6923" },
     second: { name: "Aditi", role: "The Bride", parents: "Daughter of Mr. Pranay Thakur & Mrs. Ritu Singh", photo: "6826" }
     // parents example:  "Son of Mr. … & Mrs. …"
   },
@@ -32,7 +32,12 @@ window.WEDDING = {
   city: "",                       // e.g. "Mumbai" — shown under the date
 
   /* ---------- Main venue (section is hidden while name is "") ---------- */
-  venue: { name: "", address: "", mapUrl: "" },
+  // name and address are exactly as Google Maps gives them for the shared map link
+  venue: {
+    name: "Chawla Greens",
+    address: "Khaira, Chhattisgarh 495006",
+    mapUrl: "https://maps.app.goo.gl/gfQuq8wy382hPCR86"
+  },
 
   /* ---------- Functions ----------
      icon: haldi | carnival | mehndi | sangeet | wedding | reception | lotus
@@ -43,7 +48,7 @@ window.WEDDING = {
     { icon: "haldi",    name: "Haldi",    note: "A splash of turmeric, laughter and blessings.", date: "2026-12-07", time: "",                venue: "", mapUrl: "" },
     { icon: "carnival", name: "Carnival", note: "Fun, games and laughter with family and friends.", date: "2026-12-08", time: "Morning to noon", venue: "", mapUrl: "" },
     { icon: "mehndi",   name: "Mehndi",   note: "Henna, music and the colours of celebration.",  date: "2026-12-08", time: "Evening",         venue: "", mapUrl: "" },
-    { icon: "wedding",  name: "Wedding",  note: "Two families become one.",                      date: "2026-12-09", time: "Evening",         venue: "", mapUrl: "" }
+    { icon: "wedding",  name: "Wedding",  note: "Two families become one.",                      date: "2026-12-09", time: "Evening",         venue: "Chawla Greens, Khaira", mapUrl: "https://maps.app.goo.gl/gfQuq8wy382hPCR86" }
   ],
 
   /* ---------- RSVP (button is hidden while whatsapp is "") ----------
@@ -68,6 +73,7 @@ window.WEDDING = {
     "",
     "🗓️ *Wednesday, 9 December 2026*",
     "Celebrations begin on 7 December",
+    "📍 *Chawla Greens, Khaira, Chhattisgarh*",
     "",
     "💌 Your invitation is here:",
     "{link}",
