@@ -63,6 +63,9 @@
   }
   function parseDate(v) {
     if (!v) return null;
+    v = String(v);
+    // a date without a time means "that day in India", not UTC midnight
+    if (/^\d{4}-\d{2}-\d{2}$/.test(v)) v += 'T00:00:00+05:30';
     var d = new Date(v);
     return isNaN(d.getTime()) ? null : d;
   }
@@ -103,10 +106,15 @@
     '<span class="n n--1">' + esc(A.name) + '</span>' +
     '<span class="amp">&amp;</span>' +
     '<span class="n n--2">' + esc(B.name) + '</span>';
+  var hasTime = /T\d{2}:\d{2}/.test(String(W.date || ''));
+  // exact time when one is set, otherwise the loose text from config ("Evening")
+  var whenText = weddingDate ? (hasTime ? fmtTime(weddingDate) : (W.timeText || '')) : '';
   $('#heroDate').textContent = weddingDate
-    ? fmtDate(weddingDate, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })
+    ? fmtDate(weddingDate, { day: 'numeric', month: 'long', year: 'numeric' })
     : 'Date to be announced';
-  $('#heroCity').textContent = W.city || '';
+  $('#heroCity').textContent = (weddingDate
+    ? [fmtDate(weddingDate, { weekday: 'long' }), whenText, W.city]
+    : [W.city]).filter(Boolean).join(' · ');
 
   var heroMedia = $('#heroMedia');
   var heroIds = (W.heroPhotos || []).slice();
@@ -201,7 +209,10 @@
     var diff = weddingDate.getTime() - Date.now();
     if (diff <= 0) {
       ['days', 'hours', 'minutes', 'seconds'].forEach(function (k) { setCd(k, 0); });
-      $('#cdNote').textContent = 'The celebrations have begun!';
+      var DAY = 86400000;
+      $('#cdNote').textContent = -diff < (hasTime ? DAY / 4 : DAY)
+        ? (hasTime ? 'The celebrations have begun!' : 'Today is the day!')
+        : 'Happily married!';
       return false;
     }
     var s = Math.floor(diff / 1000);
@@ -212,10 +223,11 @@
     return true;
   }
   if (weddingDate) {
-    var hasTime = /T\d{2}:\d{2}/.test(String(W.date));
-    $('#bigDate').textContent =
-      fmtDate(weddingDate, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }) +
-      (hasTime ? ' · ' + fmtTime(weddingDate) : '');
+    // stacked: weekday / date / time, so it never breaks mid-date on a narrow phone
+    $('#bigDate').innerHTML =
+      '<span class="bigdate__day">' + esc(fmtDate(weddingDate, { weekday: 'long' })) + '</span>' +
+      '<span class="bigdate__main">' + esc(fmtDate(weddingDate, { day: 'numeric', month: 'long', year: 'numeric' })) + '</span>' +
+      (whenText ? '<span class="bigdate__when">' + esc(whenText) + '</span>' : '');
     if (tickCountdown()) {
       var cdTimer = setInterval(function () { if (!tickCountdown()) clearInterval(cdTimer); }, 1000);
     }
@@ -235,6 +247,15 @@
     };
     var icsEsc = function (s) { return String(s || '').replace(/([,;\\])/g, '\\$1').replace(/\n/g, '\\n'); };
     var end = new Date(weddingDate.getTime() + 4 * 3600 * 1000);
+    var dtStart = 'DTSTART:' + stamp(weddingDate);
+    var dtEnd = 'DTEND:' + stamp(end);
+    if (!hasTime) {
+      // no exact time yet → an all-day entry on the wedding date
+      var m = /^(\d{4})-(\d{2})-(\d{2})/.exec(String(W.date));
+      var next = new Date(Date.UTC(+m[1], +m[2] - 1, +m[3] + 1));
+      dtStart = 'DTSTART;VALUE=DATE:' + m[1] + m[2] + m[3];
+      dtEnd = 'DTEND;VALUE=DATE:' + next.getUTCFullYear() + pad(next.getUTCMonth() + 1) + pad(next.getUTCDate());
+    }
     var v = W.venue || {};
     var loc = [v.name, v.address].filter(Boolean).join(', ');
     var lines = [
@@ -242,8 +263,8 @@
       'BEGIN:VEVENT',
       'UID:wedding-' + weddingDate.getTime() + '@invitation',
       'DTSTAMP:' + stamp(new Date()),
-      'DTSTART:' + stamp(weddingDate),
-      'DTEND:' + stamp(end),
+      dtStart,
+      dtEnd,
       'SUMMARY:' + icsEsc(NAMES + ' — Wedding'),
       loc ? 'LOCATION:' + icsEsc(loc) : '',
       'URL:' + location.href.split('#')[0],
@@ -267,6 +288,7 @@
     mehndi: '<path d="M27 6c9 3 14 12 11 21-3 9-12 14-20 11-7-3-10-11-6-17 3-5 10-6 13-2 3 4 0 9-4 9-3 0-4-3-3-5"/><path d="M34 4l1 3M40 8l-2 2.5M43 14l-3 1"/><path d="M11 41c2.5 2 5.5 3 9 3"/>',
     sangeet: '<ellipse cx="11" cy="25" rx="5" ry="12"/><ellipse cx="37" cy="25" rx="5" ry="12"/><path d="M11 13h26M11 37h26"/><path d="M16.5 14l5 22 5-22 5 22"/><path d="M19 8l10-3"/>',
     wedding: '<path d="M16 21c-5 3-8 8-6 14 2 5 7 8 14 8s12-3 14-8c2-6-1-11-6-14"/><path d="M15 18h18v3H15z"/><path d="M24 4c3 2.5 4.5 5 4.5 8 0 3-2 5-4.5 5s-4.5-2-4.5-5c0-3 1.5-5.5 4.5-8z"/><path d="M19 16c-4-1-7-4-8-8 4 0 7 3 8 8zM29 16c4-1 7-4 8-8-4 0-7 3-8 8z"/><path d="M10.5 30c4 2 8.5 3 13.5 3s9.5-1 13.5-3"/>',
+    carnival: '<circle cx="24" cy="20" r="13"/><circle cx="24" cy="20" r="2.5"/><path d="M24 7v10.5M24 22.5V33M11 20h10.5M26.5 20H37M14.8 10.8l7.4 7.4M25.8 21.8l7.4 7.4M33.2 10.8l-7.4 7.4M22.2 21.8l-7.4 7.4"/><path d="M22.5 22l-7 22M25.5 22l7 22M11 44h26"/>',
     reception: '<circle cx="18" cy="31" r="10"/><circle cx="30" cy="31" r="10"/><path d="M18 21l-3.5-4.5L18 12l3.5 4.5z"/><path d="M34 5v6M31 8h6M41 13v4M39 15h4"/>',
     lotus: '<path d="M24 10c4.5 5 6.5 10 6.5 15S28 35 24 37c-4-2-6.5-7-6.5-12S19.5 15 24 10z"/><path d="M17.5 27c-5-1.5-9-5.5-10-11 5 0 9 2 11.5 6M30.5 27c5-1.5 9-5.5 10-11-5 0-9 2-11.5 6"/><path d="M6 33c5 5 11 8 18 8s13-3 18-8"/>'
   };
@@ -499,51 +521,97 @@
   if (films.length) {
     $('#filmTitle').innerHTML = (films.length === 1 ? (films[0].title || 'Our Film') : 'Our Films')
       .split(' ').map(function (w) { return '<span class="nw">' + esc(w) + '</span>'; }).join(' ');
-    filmsEl.innerHTML = films.map(function (f, i) {
-      return (films.length > 1 && f.title ? '<p class="film__title" data-reveal>' + esc(f.title) + '</p>' : '') +
-        '<div class="film" data-film="' + i + '" data-reveal="zoom">' +
+    // one player; with several films, thumbnails underneath switch what it shows
+    var multi = films.length > 1;
+    filmsEl.innerHTML =
+      '<div class="film" data-reveal="zoom"></div>' +
+      (multi
+        ? '<p class="film__now" aria-live="polite"></p>' +
+          '<div class="film-tabs" role="tablist" aria-label="Choose a film" data-reveal>' +
+          films.map(function (f, i) {
+            return '<button class="film-tab" type="button" role="tab" data-film="' + i + '">' +
+              '<span class="film-tab__img">' +
+              (f.poster ? '<img src="' + esc(f.poster) + '" alt="" loading="lazy" decoding="async" />' : '') +
+              '<i></i></span>' +
+              '<span class="film-tab__t">' + esc(f.title || 'Film ' + (i + 1)) + '</span>' +
+              (f.length ? '<span class="film-tab__d">' + esc(f.length) + '</span>' : '') +
+              '</button>';
+          }).join('') + '</div>'
+        : '');
+    var filmBox = $('.film', filmsEl);
+    var filmNow = $('.film__now', filmsEl);
+    var filmTabs = $$('.film-tab', filmsEl);
+    var filmCur = 0;
+    var filmMain = null;          // the full film's <video>, once play is pressed
+    var filmTeaser = null;        // the silent loop shown before that
+    var filmVisible = false;
+
+    var syncTeaser = function () {
+      var f = films[filmCur];
+      if (filmMain || !filmTeaser || !f.teaser || reduceMotion) return;
+      if (filmVisible) {
+        if (!filmTeaser.getAttribute('src')) filmTeaser.src = f.teaser;
+        var p = filmTeaser.play();
+        if (p && p.catch) p.catch(function () {});
+      } else {
+        filmTeaser.pause();
+      }
+    };
+    var playFilm = function () {
+      if (filmMain) return;
+      var f = films[filmCur];
+      filmMain = doc.createElement('video');
+      filmMain.controls = true;
+      filmMain.playsInline = true;
+      filmMain.setAttribute('playsinline', '');
+      filmMain.preload = 'auto';
+      if (f.poster) filmMain.poster = f.poster;
+      filmMain.src = f.src;
+      filmTeaser.pause();
+      filmTeaser.replaceWith(filmMain);
+      filmBox.classList.add('is-playing');
+      if (audio && !audio.paused) { audio.pause(); musicBtn.setAttribute('aria-pressed', 'false'); }
+      if (multi) {
+        // when one film ends, line up the next one
+        filmMain.addEventListener('ended', function () { showFilm((filmCur + 1) % films.length, false); });
+      }
+      var p = filmMain.play();
+      if (p && p.catch) p.catch(function () { /* the native play button still works */ });
+    };
+    var showFilm = function (i, autoplay) {
+      var f = films[i];
+      if (filmMain) {
+        filmMain.pause();
+        filmMain.removeAttribute('src');
+        filmMain.load();
+        filmMain = null;
+      }
+      filmCur = i;
+      filmBox.classList.remove('is-playing');
+      filmBox.innerHTML =
         '<video class="film__teaser" muted loop playsinline preload="none"' + (f.poster ? ' poster="' + esc(f.poster) + '"' : '') + '></video>' +
         '<button class="film__play" type="button" aria-label="Play ' + esc(f.title || 'film') + ' with sound">' +
-        '<i></i><span class="film__label">Tap to play with sound</span></button>' +
-        '</div>';
-    }).join('');
-    $$('.film', filmsEl).forEach(function (box) {
-      var f = films[parseInt(box.getAttribute('data-film'), 10)];
-      var teaser = $('.film__teaser', box);
-      var playing = false;
-      var main = null;
-      $('.film__play', box).addEventListener('click', function () {
-        if (playing) return;
-        playing = true;
-        main = doc.createElement('video');
-        main.controls = true;
-        main.playsInline = true;
-        main.setAttribute('playsinline', '');
-        main.preload = 'auto';
-        if (f.poster) main.poster = f.poster;
-        main.src = f.src;
-        teaser.pause();
-        teaser.replaceWith(main);
-        box.classList.add('is-playing');
-        if (audio && !audio.paused) { audio.pause(); musicBtn.setAttribute('aria-pressed', 'false'); }
-        var p = main.play();
-        if (p && p.catch) p.catch(function () { /* user can press the native play button */ });
+        '<i></i><span class="film__label">Tap to play with sound</span></button>';
+      filmTeaser = $('.film__teaser', filmBox);
+      $('.film__play', filmBox).addEventListener('click', playFilm);
+      filmTabs.forEach(function (t, k) {
+        t.classList.toggle('is-on', k === i);
+        t.setAttribute('aria-selected', k === i ? 'true' : 'false');
       });
-      if ('IntersectionObserver' in window) {
-        new IntersectionObserver(function (en) {
-          var vis = en[0].isIntersecting;
-          if (playing) { if (!vis && main && !main.paused) main.pause(); return; }
-          if (!f.teaser || reduceMotion) return;
-          if (vis) {
-            if (!teaser.src) teaser.src = f.teaser;
-            var p = teaser.play();
-            if (p && p.catch) p.catch(function () {});
-          } else {
-            teaser.pause();
-          }
-        }, { threshold: 0.25 }).observe(box);
-      }
+      if (filmNow) filmNow.textContent = f.title || '';
+      if (autoplay) playFilm(); else syncTeaser();
+    };
+    filmTabs.forEach(function (t) {
+      t.addEventListener('click', function () { showFilm(parseInt(t.getAttribute('data-film'), 10), true); });
     });
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (en) {
+        filmVisible = en[0].isIntersecting;
+        if (filmMain) { if (!filmVisible && !filmMain.paused) filmMain.pause(); return; }
+        syncTeaser();
+      }, { threshold: 0.25 }).observe(filmBox);
+    }
+    showFilm(0, false);
   } else {
     $('#film').hidden = true;
   }

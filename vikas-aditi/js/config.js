@@ -14,8 +14,8 @@ window.WEDDING = {
   /* ---------- The couple (shown in this order everywhere) ---------- */
   couple: {
     first:  { name: "Vikas", role: "The Groom", parents: "", photo: "8995" },
-    second: { name: "Aditi", role: "The Bride", parents: "", photo: "8998" }
-    // parents example:  "Son of Mrs. … & Mr. …"
+    second: { name: "Aditi", role: "The Bride", parents: "Daughter of Mr. Pranay Thakur & Mrs. Ritu Singh", photo: "8998" }
+    // parents example:  "Son of Mr. … & Mrs. …"
   },
 
   /* ---------- Traditional lines (set to "" to hide) ---------- */
@@ -23,24 +23,26 @@ window.WEDDING = {
   shubh:      "॥ शुभ विवाह ॥",
 
   /* ---------- Main wedding date ----------
-     ISO format with India time zone, e.g. "2027-02-14T19:00:00+05:30".
-     Leave "" until the date is confirmed (countdown stays hidden).   */
-  date: "",
+     Date only      → "2026-12-09"                 (countdown runs to the start of that day, India time)
+     Date + time    → "2026-12-09T19:00:00+05:30"  (countdown runs to that exact time)
+     The year was not stated — 2026 is assumed. Change it here if needed.  */
+  date: "2026-12-09",
+  timeText: "Evening",            // shown next to the date while no exact time is set ("" to hide)
   city: "",                       // e.g. "Mumbai" — shown under the date
 
   /* ---------- Main venue (section is hidden while name is "") ---------- */
   venue: { name: "", address: "", mapUrl: "" },
 
   /* ---------- Functions ----------
-     SAMPLE LIST — replace with the real functions, or delete rows.
-     icon: haldi | mehndi | sangeet | wedding | reception | lotus
-     date/time/venue/mapUrl left "" → card shows "To be announced". */
+     icon: haldi | carnival | mehndi | sangeet | wedding | reception | lotus
+     date: "YYYY-MM-DD"   time: any text, e.g. "Evening" or "7:00 PM"
+     venue / mapUrl left "" → card shows "Venue to be announced".
+     note: a short tagline — reword or set to "" to remove.            */
   events: [
-    { icon: "haldi",     name: "Haldi",     note: "A splash of turmeric, laughter and blessings.", date: "", time: "", venue: "", mapUrl: "" },
-    { icon: "mehndi",    name: "Mehndi",    note: "Henna, music and the colours of celebration.",  date: "", time: "", venue: "", mapUrl: "" },
-    { icon: "sangeet",   name: "Sangeet",   note: "An evening of song, dance and family.",         date: "", time: "", venue: "", mapUrl: "" },
-    { icon: "wedding",   name: "Wedding",   note: "Two families become one.",                      date: "", time: "", venue: "", mapUrl: "" },
-    { icon: "reception", name: "Reception", note: "Dinner, blessings and celebration.",            date: "", time: "", venue: "", mapUrl: "" }
+    { icon: "haldi",    name: "Haldi",    note: "A splash of turmeric, laughter and blessings.", date: "2026-12-07", time: "",                venue: "", mapUrl: "" },
+    { icon: "carnival", name: "Carnival", note: "Fun, games and laughter with family and friends.", date: "2026-12-08", time: "Morning to noon", venue: "", mapUrl: "" },
+    { icon: "mehndi",   name: "Mehndi",   note: "Henna, music and the colours of celebration.",  date: "2026-12-08", time: "Evening",         venue: "", mapUrl: "" },
+    { icon: "wedding",  name: "Wedding",  note: "Two families become one.",                      date: "2026-12-09", time: "Evening",         venue: "", mapUrl: "" }
   ],
 
   /* ---------- RSVP (button is hidden while whatsapp is "") ----------
@@ -65,12 +67,22 @@ window.WEDDING = {
       photos: ["9015", "9016", "9017", "9019", "9021", "9022", "9023"] }
   ],
 
-  /* ---------- Films (add more rows for more videos) ---------- */
+  /* ---------- Films ----------
+     The first one is shown first; the others appear as thumbnails to tap.
+     teaser = short silent loop shown before play ("" to skip).          */
   films: [
-    { title:  "Our Pre-Wedding Film",
+    { title:  "Rooted in Tradition",    length: "1:46",
       src:    "assets/video/film.mp4",
-      teaser: "assets/video/teaser.mp4",    // short silent loop shown before play ("" to skip)
-      poster: "assets/video/poster.webp" }
+      teaser: "assets/video/teaser.mp4",
+      poster: "assets/video/poster.webp" },
+    { title:  "Golden Hour by the Sea", length: "0:58",
+      src:    "assets/video/film-sea.mp4",
+      teaser: "assets/video/film-sea-teaser.mp4",
+      poster: "assets/video/film-sea-poster.webp" },
+    { title:  "Whispers of the Woods",  length: "1:08",
+      src:    "assets/video/film-woods.mp4",
+      teaser: "assets/video/film-woods-teaser.mp4",
+      poster: "assets/video/film-woods-poster.webp" }
   ],
 
   /* ---------- Background music (optional) ----------
