@@ -932,6 +932,21 @@
   });
   if (/[?&]skipintro\b/.test(location.search)) openGate(true);
 
+  /* a photo that fails to load (patchy mobile data, a momentary server hiccup) gets two more tries */
+  doc.addEventListener('error', function (e) {
+    var im = e.target;
+    if (!im || im.tagName !== 'IMG' || !im.getAttribute('src')) return;
+    var tries = parseInt(im.getAttribute('data-retry') || '0', 10);
+    if (tries >= 2) return;
+    im.setAttribute('data-retry', String(tries + 1));
+    setTimeout(function () {
+      var src = im.getAttribute('src');
+      var set = im.getAttribute('srcset');
+      if (set) { im.removeAttribute('srcset'); im.setAttribute('srcset', set); }
+      im.src = src;                              // assigning again starts a fresh request
+    }, 1500 * (tries + 1));
+  }, true);
+
   /* a tap on any empty spot scatters a few petals */
   doc.addEventListener('pointerdown', function (e) {
     if (!opened || !lb.hidden) return;
