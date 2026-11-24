@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en" class="is-locked">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Vikas &amp; Aditi — Wedding Invitation</title>
+  <meta name="description" content="With the blessings of our families, we invite you to celebrate our wedding." />
+  <!-- Personal invitation: keep it out of search engines. Remove this line if you want it indexed. -->
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#4E1016" />
+
+  <!-- Link preview (WhatsApp / social). og:image must be an absolute URL. -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Vikas &amp; Aditi — Wedding Invitation" />
+  <meta property="og:description" content="With the blessings of our families, we invite you to celebrate our wedding." />
+  <meta property="og:image" content="https://www.amhsolutions.xyz/vikas-aditi/assets/og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%234E1016'/%3E%3Cg fill='none' stroke='%23E5C777' stroke-width='2.4' stroke-linejoin='round'%3E%3Cpath d='M32 12c6 7 9 14 9 21 0 7-3 12-9 15-6-3-9-8-9-15 0-7 3-14 9-21z'/%3E%3Cpath d='M23 40c-7-2-12-7-13-14 6 0 12 3 14 8M41 40c7-2 12-7 13-14-6 0-12 3-14 8'/%3E%3C/g%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Pinyon+Script&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet" />
+  <link rel="preload" as="image" href="assets/photos/9018-800.webp"
+        imagesrcset="assets/photos/9018-800.webp 800w, assets/photos/9018-1400.webp 1400w" imagesizes="100vw" />
+  <link rel="stylesheet" href="css/style.css" />
+  <noscript><style>.gate{display:none}html.is-locked,html.is-locked body{overflow:auto;height:auto}</style></noscript>
+</head>
+<body>
+
+  <!-- =============== COVER (tap to open) =============== -->
+  <div class="gate" id="gate">
+    <div class="gate__door gate__door--l" aria-hidden="true"></div>
+    <div class="gate__door gate__door--r" aria-hidden="true"></div>
+    <div class="gate__inner">
+      <p class="gate__shubh deva" data-bind="shubh"></p>
+      <div class="gate__sealwrap">
+        <img class="gate__mandala" src="assets/ornaments/mandala.svg" alt="" aria-hidden="true" />
+        <div class="gate__seal" aria-hidden="true">
+          <span class="gate__ring"></span>
+          <span class="gate__mono" data-bind="monogram"></span>
+        </div>
+      </div>
+      <p class="gate__eyebrow">Wedding Invitation</p>
+      <p class="gate__names" data-bind="names"></p>
+      <button class="gate__btn" id="openBtn" type="button">
+        <span>Open Invitation</span>
+      </button>
+      <p class="gate__hint" aria-hidden="true">Tap to open</p>
+    </div>
+  </div>
+
+  <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+  <canvas class="petals" id="petals" aria-hidden="true"></canvas>
+
+  <main id="page">
+
+    <!-- =============== HERO =============== -->
+    <header class="hero live" id="top">
+      <div class="hero__bgmandala" aria-hidden="true"><img src="assets/ornaments/mandala.svg" alt="" /></div>
+      <div class="hero__frame"><div class="hero__media" id="heroMedia"></div></div>
+      <div class="hero__shade" aria-hidden="true"></div>
+      <div class="toran" id="toran" aria-hidden="true"></div>
+
+      <div class="hero__content">
+        <p class="hero__eyebrow"><span>We are getting married</span></p>
+        <h1 class="hero__names" id="heroNames"></h1>
+        <svg class="divider divider--light" viewBox="0 0 240 24" aria-hidden="true">
+          <path d="M4 12h86M150 12h86" /><path d="M120 3l9 9-9 9-9-9z" /><path d="M104 12l-5-5-5 5 5 5zM146 12l-5-5-5 5 5 5z" />
+        </svg>
+        <p class="hero__date" id="heroDate"></p>
+        <p class="hero__city" id="heroCity"></p>
+      </div>
+
+      <a class="scroll-cue" href="#invite" aria-label="Scroll to the invitation">
+        <span class="scroll-cue__mouse"></span>
+        <span class="scroll-cue__txt">Scroll</span>
+      </a>
+    </header>
+
+    <!-- =============== INVITATION =============== -->
+    <section class="section live section--ivory" id="invite" data-nav="Invite">
+      <img class="watermark watermark--tr" src="assets/ornaments/mandala-ink.svg" alt="" aria-hidden="true" loading="lazy" />
+      <img class="watermark watermark--bl" src="assets/ornaments/mandala-ink.svg" alt="" aria-hidden="true" loading="lazy" />
+
+      <div class="wrap wrap--narrow center">
+        <p class="invocation deva" data-bind="invocation" data-reveal></p>
+
+        <div class="arch arch--lg" id="inviteArch" data-reveal="zoom"></div>
+
+        <div class="head" data-reveal>
+          <p class="eyebrow">With the blessings of our elders</p>
+          <h2 class="title">With Joyful Hearts</h2>
+          <svg class="divider" viewBox="0 0 240 24" aria-hidden="true">
+            <path d="M4 12h86M150 12h86" /><path d="M120 3l9 9-9 9-9-9z" /><path d="M104 12l-5-5-5 5 5 5zM146 12l-5-5-5 5 5 5z" />
+          </svg>
+        </div>
+
+        <p class="lead" data-reveal>
+          Together with our families, we invite you to share in our happiness
+          as we begin a new chapter of our lives.
+        </p>
+
+        <div class="couple" id="couple"></div>
+
+        <p class="lead lead--sm" data-reveal>
+          Your presence and blessings will make our celebration complete.
+        </p>
+      </div>
+    </section>
+
+    <!-- =============== SAVE THE DATE =============== -->
+    <section class="section live section--maroon" id="date">
+      <div class="sparkles" aria-hidden="true"></div>
+      <img class="bigmandala" src="assets/ornaments/mandala.svg" alt="" aria-hidden="true" loading="lazy" />
+      <div class="wrap wrap--narrow center">
+        <div class="head" data-reveal>
+          <p class="eyebrow">Mark your calendar</p>
+          <h2 class="title">Save the Date</h2>
+          <svg class="divider" viewBox="0 0 240 24" aria-hidden="true">
+            <path d="M4 12h86M150 12h86" /><path d="M120 3l9 9-9 9-9-9z" /><path d="M104 12l-5-5-5 5 5 5zM146 12l-5-5-5 5 5 5z" />
+          </svg>
+        </div>
+        <p class="bigdate" id="bigDate" data-reveal></p>
+        <div class="countdown" id="countdown" data-reveal>
+          <div class="cd"><span class="cd__num" data-cd="days">––</span><span class="cd__lbl">Days</span></div>
+          <div class="cd"><span class="cd__num" data-cd="hours">––</span><span class="cd__lbl">Hours</span></div>
+          <div class="cd"><span class="cd__num" data-cd="minutes">––</span><span class="cd__lbl">Minutes</span></div>
+          <div class="cd"><span class="cd__num" data-cd="seconds">––</span><span class="cd__lbl">Seconds</span></div>
+        </div>
+        <p class="cd-note" id="cdNote" data-reveal></p>
+        <button class="btn btn--gold" id="calBtn" type="button" hidden data-reveal>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3v3M17 3v3M4 9h16M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zM12 12v5M9.5 14.5h5" /></svg>
+          <span>Add to Calendar</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- =============== EVENTS =============== -->
+    <section class="section live section--ivory" id="events" data-nav="Events">
+      <img class="watermark watermark--tl" src="assets/ornaments/mandala-ink.svg" alt="" aria-hidden="true" loading="lazy" />
+      <div class="wrap">
+        <div class="head center" data-reveal>
+          <p class="eyebrow">Join us for</p>
+          <h2 class="title">The Celebrations</h2>
+          <svg class="divider" viewBox="0 0 240 24" aria-hidden="true">
+            <path d="M4 12h86M150 12h86" /><path d="M120 3l9 9-9 9-9-9z" /><path d="M104 12l-5-5-5 5 5 5zM146 12l-5-5-5 5 5 5z" />
+          </svg>
+        </div>
+        <ol class="timeline" id="timeline"></ol>
+      </div>
+    </section>
+
+    <!-- =============== VENUE (shown only when a venue is set) =============== -->
+    <section class="section section--sand" id="venue" hidden>
+      <div class="wrap wrap--narrow center">
+        <div class="head" data-reveal>
+          <p class="eyebrow">Where we celebrate</p>
+          <h2 class="title">The Venue</h2>
+          <svg class="divider" viewBox="0 0 240 24" aria-hidden="true">
+            <path d="M4 12h86M150 12h86" /><path d="M120 3l9 9-9 9-9-9z" /><path d="M104 12l-5-5-5 5 5 5zM146 12l-5-5-5 5 5 5z" />
+          </svg>
+        </div>
+        <p class="venue__name" id="venueName" data-reveal></p>
+        <p class="venue__addr" id="venueAddr" data-reveal></p>
+        <a class="btn btn--maroon" id="venueMap" target="_blank" rel="noopener" hidden data-reveal>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.500C5 14.8 12 21 12 21z" /><circle cx="12" cy="9.5" r="2.5" /></svg>
+          <span>Open in Google Maps</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- =============== QUOTE =============== -->
+    <section class="quote" id="quote">
+      <div class="quote__bg" id="quoteBg" data-parallax="0.18"></div>
+      <div class="quote__shade" aria-hidden="true"></div>
+      <blockquote class="quote__text" data-reveal>
+        <span class="quote__mark" aria-hidden="true">“</span>
+        Two hearts, one journey —<br />and it begins with your blessings.
+      </blockquote>
+    </section>
+
+    <!-- =============== GALLERY =============== -->
+    <section class="section live section--ivory section--gallery" id="moments" data-nav="Moments">
+      <div class="wrap">
+        <div class="head center" data-reveal>
+          <p class="eyebrow">Before the big day</p>
+          <h2 class="title">Our Moments</h2>
+          <svg class="divider" viewBox="0 0 240 24" aria-hidden="true">
+            <path d="M4 12h86M150 12h86" /><path d="M120 3l9 9-9 9-9-9z" /><path d="M104 12l-5-5-5 5 5 5zM146 12l-5-5-5 5 5 5z" />
+          </svg>
+        </div>
+      </div>
+      <div id="gallery"></div>
+    </section>
+
+    <!-- =============== FILM =============== -->
+    <section class="section live section--maroon" id="film" data-nav="Film">
+      <div class="sparkles" aria-hidden="true"></div>
+      <div class="wrap center">
+        <div class="head" data-reveal>
+          <p class="eyebrow">Press play</p>
+          <h2 class="title title--sm" id="filmTitle">Our Film</h2>
+          <svg class="divider" viewBox="0 0 240 24" aria-hidden="true">
+            <path d="M4 12h86M150 12h86" /><path d="M120 3l9 9-9 9-9-9z" /><path d="M104 12l-5-5-5 5 5 5zM146 12l-5-5-5 5 5 5z" />
+          </svg>
+        </div>
+        <div id="films"></div>
+      </div>
+    </section>
+
+    <!-- =============== CLOSING =============== -->
+    <section class="closing live" id="rsvp" data-nav="RSVP">
+      <div class="closing__bg" id="closingBg" data-parallax="0.14"></div>
+      <div class="closing__shade" aria-hidden="true"></div>
+      <div class="wrap wrap--narrow center closing__in">
+        <div class="diyas" aria-hidden="true" data-reveal>
+          <span class="diya"><i></i></span><span class="diya diya--lg"><i></i></span><span class="diya"><i></i></span>
+        </div>
+        <div class="head" data-reveal>
+          <p class="eyebrow">With love &amp; gratitude</p>
+          <h2 class="title">We Await You</h2>
+          <svg class="divider" viewBox="0 0 240 24" aria-hidden="true">
+            <path d="M4 12h86M150 12h86" /><path d="M120 3l9 9-9 9-9-9z" /><path d="M104 12l-5-5-5 5 5 5zM146 12l-5-5-5 5 5 5z" />
+          </svg>
+        </div>
+        <p class="lead" data-reveal>
+          We would be honoured to have you with us on our special day.
+        </p>
+        <div class="actions" data-reveal>
+          <a class="btn btn--gold" id="rsvpBtn" target="_blank" rel="noopener" hidden>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.4-4.200A8 8 0 1 1 8.6 19L4 20z" /><path d="M9 9.500c0 3 2.5 5.5 5.5 5.500l1-1.5-2-1-.800.800c-.900-.400-1.6-1.1-2-2l.800-.800-1-2L9 9.500z" /></svg>
+            <span>RSVP on WhatsApp</span>
+          </a>
+          <button class="btn btn--line" id="shareBtn" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="12" r="2.5" /><circle cx="17" cy="6" r="2.5" /><circle cx="17" cy="18" r="2.5" /><path d="M8.2 10.900l6.6-3.700M8.2 13.100l6.6 3.7" /></svg>
+            <span>Share Invitation</span>
+          </button>
+        </div>
+        <p class="closing__names" data-bind="names" data-reveal></p>
+        <p class="closing__shubh deva" data-bind="shubh" data-reveal></p>
+      </div>
+    </section>
+  </main>
+
+  <!-- floating quick-nav -->
+  <nav class="dock" id="dock" aria-label="Sections"></nav>
+  <button class="music" id="musicBtn" type="button" hidden aria-label="Toggle music" aria-pressed="false">
+    <span></span><span></span><span></span><span></span>
+  </button>
+
+  <!-- photo viewer -->
+  <div class="lightbox" id="lightbox" hidden aria-hidden="true" role="dialog" aria-label="Photo viewer">
+    <button class="lightbox__close" type="button" aria-label="Close">×</button>
+    <button class="lightbox__nav lightbox__nav--prev" type="button" aria-label="Previous photo">‹</button>
+    <figure class="lightbox__fig"><img id="lightboxImg" alt="" /></figure>
+    <button class="lightbox__nav lightbox__nav--next" type="button" aria-label="Next photo">›</button>
+    <p class="lightbox__count" id="lightboxCount"></p>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
