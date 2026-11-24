@@ -46,6 +46,11 @@
       </div>
       <p class="gate__eyebrow">Wedding Invitation</p>
       <p class="gate__names" data-bind="names"></p>
+      <!-- personal greeting: shown when the link ends with ?to=Family%20Name (see send.html) -->
+      <p class="gate__guest" id="gateGuest" hidden>
+        <span class="gate__guest-label" id="gateGuestLabel"></span>
+        <span class="gate__guest-name" id="gateGuestName"></span>
+      </p>
       <button class="gate__btn" id="openBtn" type="button">
         <span>Open Invitation</span>
       </button>
