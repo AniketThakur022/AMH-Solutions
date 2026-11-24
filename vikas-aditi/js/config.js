@@ -91,6 +91,8 @@ window.WEDDING = {
 
   /* ---------- Background music (optional) ----------
      Put an .mp3 you have the rights to in assets/ and set e.g. "assets/music.mp3".
-     A music button appears only when this is filled in.               */
+     It starts when the guest opens the cover, loops quietly, steps aside
+     while a film plays and stops when they leave the page. A music on/off
+     button appears only when this is filled in.                        */
   music: ""
 };
