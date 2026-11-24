@@ -14,8 +14,8 @@ window.WEDDING = {
 
   /* ---------- The couple (shown in this order everywhere) ---------- */
   couple: {
-    first:  { name: "Vikas", role: "The Groom", parents: "Son of Mr. Barun Kumar & Mrs. Neelam Singh", photo: "6923" },
-    second: { name: "Aditi", role: "The Bride", parents: "Daughter of Mr. Pranay Thakur & Mrs. Ritu Singh", photo: "6826" }
+    first:  { name: "Aditi", role: "The Bride", parents: "Daughter of Mr. Pranay Thakur & Mrs. Ritu Singh", photo: "6826" },
+    second: { name: "Vikas", role: "The Groom", parents: "Son of Mr. Barun Kumar & Mrs. Neelam Singh", photo: "6923" }
     // parents example:  "Son of Mr. … & Mrs. …"
   },
 
@@ -58,7 +58,7 @@ window.WEDDING = {
   /* ---------- Personal invitations ----------
      A link ending in  ?to=Sharma%20Family  shows that name on the cover,
      above the "Open Invitation" button. The easy way to make such links
-     and send them is the helper page:  …/vikas-aditi/send.html          */
+     and send them is the helper page:  …/aditi-vikas/send.html          */
   guestLabel: "A special invitation for",
 
   /* The WhatsApp message offered by send.html.
