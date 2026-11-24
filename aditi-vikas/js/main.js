@@ -1,5 +1,5 @@
 /* =====================================================================
-   Vikas & Aditi — Wedding Invitation
+   Aditi & Vikas — Wedding Invitation
    All content comes from js/config.js (window.WEDDING).
    No libraries — plain JS so it stays light on phones.
    ===================================================================== */
@@ -95,7 +95,7 @@
   });
   if (NAMES) doc.title = NAMES + ' — Wedding Invitation';
 
-  /* ---------- personal greeting on the cover:  …/vikas-aditi/?to=Sharma%20Family ----------
+  /* ---------- personal greeting on the cover:  …/aditi-vikas/?to=Sharma%20Family ----------
      The name is shown as plain text only, tidied and capped at 60 characters. */
   var guestName = '';
   try { guestName = new URLSearchParams(location.search).get('to') || ''; } catch (e) { guestName = ''; }
