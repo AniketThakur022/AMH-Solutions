@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Send invitations — Wedding Invitation</title>
+  <!-- Helper page for the family only: makes a personal link + WhatsApp message for each guest. -->
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#111E42" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../aditi-vikas/css/send.css" />
+  <!-- navy, so this page is not mistaken for the bride's-side send page -->
+  <style>:root { --maroon-900: #0c1530; --maroon-800: #111e42; --maroon-700: #182958; }</style>
+</head>
+<body>
+  <main class="card">
+    <p class="eyebrow" id="side">For the family</p>
+    <h1>Send an invitation</h1>
+    <p class="whose" id="whose"></p>
+    <p class="intro">Type who it is for. Their name appears on the cover of their invitation, and the message below is ready to send.</p>
+
+    <label for="name">Name to show on the invitation</label>
+    <input id="name" type="text" maxlength="60" placeholder="e.g. Sharma Family" autocomplete="off" />
+    <p class="hint">On the cover: <em id="coverPreview"></em></p>
+
+    <label for="phone">Their WhatsApp number <span>(optional)</span></label>
+    <input id="phone" type="tel" inputmode="tel" placeholder="e.g. 919876543210" autocomplete="off" />
+    <p class="hint">With country code. Leave empty to choose the chat inside WhatsApp.</p>
+
+    <label for="msg">Message wording</label>
+    <textarea id="msg" rows="14" spellcheck="true"></textarea>
+    <p class="hint">Edit freely &mdash; your wording is remembered on this device. Keep <em>{name}</em> and <em>{link}</em> where the name and the link should go. <button type="button" class="linkbtn" id="reset">Reset wording</button></p>
+
+    <h2>Ready to send</h2>
+    <div class="out" id="out"></div>
+
+    <div class="actions">
+      <a class="btn btn--wa" id="wa" target="_blank" rel="noopener">Send on WhatsApp</a>
+      <button class="btn" id="copyMsg" type="button">Copy message</button>
+      <button class="btn btn--line" id="copyLink" type="button">Copy link only</button>
+      <a class="btn btn--line" id="open" target="_blank" rel="noopener">Preview their invitation</a>
+    </div>
+    <p class="status" id="status" role="status" aria-live="polite"></p>
+  </main>
+
+  <script src="js/config.js"></script>
+  <script src="../aditi-vikas/js/send.js"></script>
+</body>
+</html>

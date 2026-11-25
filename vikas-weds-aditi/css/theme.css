@@ -1,0 +1,74 @@
+/* =====================================================================
+   Groom's-side card — theme
+   Loaded after ../aditi-vikas/css/style.css. It only changes the look:
+   navy instead of maroon, plain serif lettering instead of calligraphy,
+   simple round-topped frames, and a cover that slides open. The petals,
+   garland and sparkles are switched off in js/config.js (effects).
+   ===================================================================== */
+
+:root {
+  /* dark tones: navy in place of maroon (same roles as in style.css) */
+  --d975: 5, 8, 20;
+  --d950: 8, 13, 32;
+  --d940: 9, 15, 36;
+  --d925: 10, 17, 40;
+  --d900: 12, 21, 48;
+  --d850: 15, 26, 58;
+  --d840: 15, 26, 58;
+  --d800: 17, 30, 66;
+  --d750: 20, 34, 76;
+  --door: 24, 40, 86;
+  --d700: 24, 41, 88;
+  --d600: 33, 56, 112;
+  --glow: 52, 92, 170;
+  --shade: 3, 6, 16;
+
+  /* plain serif italic instead of the calligraphic script */
+  --f-script: 'Cormorant Garamond', 'Hoefler Text', 'Times New Roman', serif;
+
+  /* a simple round-topped frame instead of the cusped temple arch */
+  --arch-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 150' preserveAspectRatio='none'%3E%3Cpath d='M0,150 V50 A50,50 0 0 1 100,50 V150 Z'/%3E%3C/svg%3E");
+}
+
+/* ---------- lettering: the serif needs smaller sizes than the script did ---------- */
+.gate__mono,
+.gate__names,
+.hero__names,
+.title,
+.person__name,
+.event__name,
+.closing__names { font-style: italic; font-weight: 500; }
+
+.gate__mono { font-size: 44px; padding: 6px 10px; }
+.gate__mono .amp-i { font-size: .5em; margin: 0 .2em; vertical-align: .2em; }
+.gate__names { font-size: clamp(34px, 10vw, 46px); line-height: 1.2; }
+.hero__names { font-size: clamp(54px, 16vw, 92px); line-height: 1; }
+.hero__names .n { padding: .06em .2em; margin: 0; }
+.hero__names .amp { font-size: .34em; margin: .1em 0; }
+.title { font-size: clamp(36px, 10.4vw, 60px); line-height: 1.15; }
+.title--sm { font-size: clamp(32px, 9.2vw, 54px); }
+.person__name { font-size: clamp(32px, 9.2vw, 44px); line-height: 1.1; }
+.event__name { font-size: 32px; line-height: 1.15; }
+.closing__names { font-size: clamp(36px, 10.6vw, 56px); }
+
+@media (max-height: 620px) and (max-width: 699px) {
+  .hero__names { font-size: clamp(44px, 13.5vw, 64px); }
+  .gate__mono { font-size: 36px; }
+}
+@media (min-width: 900px) {
+  .gate__mono { font-size: 52px; }
+  .gate__names { font-size: 60px; }
+  .hero__names { font-size: clamp(70px, 7vw, 108px); }
+  .event__name { font-size: 38px; }
+}
+
+/* ---------- frames: no gold outline, no gentle floating ---------- */
+.arch__line,
+.hero__frame .arch__line { display: none !important; }
+.arch--lg { animation: none; }
+
+/* ---------- cover: the two halves slide apart instead of swinging open ---------- */
+.gate { perspective: none; }
+.gate__door { transition: transform 1.3s cubic-bezier(.7, 0, .2, 1); }
+.gate.is-open .gate__door--l { transform: translateX(-101%); filter: none; }
+.gate.is-open .gate__door--r { transform: translateX(101%); filter: none; }
