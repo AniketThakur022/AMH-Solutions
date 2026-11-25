@@ -12,6 +12,10 @@
    ===================================================================== */
 window.WEDDING = {
 
+  /* This is the BRIDE'S-side card. The groom's-side card (…/vikas-weds-aditi/) has its own
+     config.js and borrows this folder's photos, films, music, stylesheet and script. */
+  side: "bride",
+
   /* ---------- The couple (shown in this order everywhere) ---------- */
   couple: {
     first:  { name: "Aditi", role: "The Bride", parents: "Daughter of Mr. Pranay Thakur & Mrs. Ritu Singh", photo: "6826" },

@@ -32,7 +32,13 @@
   window.scrollTo(0, 0);
 
   /* ---------- small helpers ---------- */
-  var PHOTO_DIR = 'assets/photos/';
+  // A second card can borrow this card's photos, films and music instead of copying them:
+  // its config sets  assetBase: "../aditi-vikas/"  and keeps the usual "assets/…" paths.
+  var ASSET = W.assetBase || '';
+  function asset(p) { return p && /^assets\//.test(p) ? ASSET + p : p; }
+  // effects: { petals: false, toran: false, sparkles: false } switches that flourish off
+  var FX = W.effects || {};
+  var PHOTO_DIR = ASSET + 'assets/photos/';
   function photo(id, opts) {
     opts = opts || {};
     return '<img src="' + PHOTO_DIR + id + '-800.webp"' +
@@ -161,6 +167,7 @@
   var toran = $('#toran');
   var toranW = 0;
   function buildToran() {
+    if (FX.toran === false) { toran.hidden = true; return; }
     var w = toran.clientWidth || window.innerWidth;
     if (Math.abs(w - toranW) < 40) return;
     toranW = w;
@@ -542,7 +549,9 @@
       audio.pause();
     }
   }
-  var films = W.films || [];
+  var films = (W.films || []).map(function (f) {
+    return { title: f.title, length: f.length, src: asset(f.src), teaser: asset(f.teaser), poster: asset(f.poster) };
+  });
   var filmsEl = $('#films');
   if (films.length) {
     $('#filmTitle').innerHTML = (films.length === 1 ? (films[0].title || 'Our Film') : 'Our Films')
@@ -670,7 +679,7 @@
     }
   });
   if (W.music) {
-    audio = new Audio(W.music);
+    audio = new Audio(asset(W.music));
     audio.loop = true;
     audio.preload = 'none';
     audio.volume = 0.85;   // iPhones ignore this, so the file itself is also mastered a little quieter
@@ -701,7 +710,7 @@
   /* =====================================================================
      SPARKLES
      ===================================================================== */
-  $$('.sparkles').forEach(function (box) {
+  (FX.sparkles === false ? [] : $$('.sparkles')).forEach(function (box) {
     var n = window.innerWidth < 700 ? 14 : 26;
     var html = '';
     for (var i = 0; i < n; i++) {
@@ -816,7 +825,10 @@
      ===================================================================== */
   var petals = (function () {
     var canvas = $('#petals');
-    if (!canvas || reduceMotion || !canvas.getContext) return { burst: function () {}, start: function () {}, puff: function () {} };
+    if (!canvas || reduceMotion || !canvas.getContext || FX.petals === false) {
+      if (canvas) canvas.hidden = true;
+      return { burst: function () {}, start: function () {}, puff: function () {} };
+    }
     var ctx = canvas.getContext('2d');
     var w = 0, h = 0, dpr = 1, list = [], running = false, last = 0;
     var TONES = [

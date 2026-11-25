@@ -1,0 +1,91 @@
+/* Styles for send.html — the family's helper page for sending personal invitations.
+   Shared by both cards; the groom's-side page only overrides the three dark colours. */
+:root {
+  --maroon-900: #3b0b10; --maroon-800: #4e1016; --maroon-700: #65161b;
+  --gold: #c9a24b; --gold-l: #ead49a; --gold-d: #96712a;
+  --ivory: #fcf6ea; --sand: #efe0c4; --ink: #3b2418; --ink-soft: #6a4a3a;
+  --f-serif: 'Cormorant Garamond', 'Times New Roman', serif;
+  --f-caps: 'Cinzel', serif;
+  --f-ui: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; padding: 0; }
+body {
+  font-family: var(--f-serif);
+  font-size: 19px;
+  line-height: 1.5;
+  color: var(--ink);
+  background: linear-gradient(180deg, var(--maroon-800), var(--maroon-900)) fixed;
+  min-height: 100vh;
+  padding: 18px 14px 40px;
+  -webkit-font-smoothing: antialiased;
+}
+.card {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 28px 20px 30px;
+  background: var(--ivory);
+  border-radius: 22px;
+  box-shadow: 0 0 0 1px rgba(234, 212, 154, .6), 0 24px 60px rgba(0, 0, 0, .4);
+}
+.eyebrow { font-family: var(--f-caps); font-size: 11px; letter-spacing: .34em; text-transform: uppercase; color: var(--gold-d); text-align: center; }
+h1 { font-family: var(--f-serif); font-weight: 500; font-style: italic; font-size: 34px; line-height: 1.15; color: var(--maroon-700); text-align: center; margin: 4px 0 4px; }
+.whose { text-align: center; font-family: var(--f-caps); font-size: 13px; letter-spacing: .2em; text-transform: uppercase; color: var(--maroon-700); margin-bottom: 10px; }
+.whose:empty { display: none; }
+.intro { text-align: center; color: var(--ink-soft); margin-bottom: 22px; }
+label { display: block; margin: 20px 0 6px; font-family: var(--f-caps); font-size: 11.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--maroon-700); }
+label span { color: var(--ink-soft); letter-spacing: .08em; text-transform: none; font-family: var(--f-serif); font-size: 16px; font-style: italic; }
+input, textarea {
+  width: 100%;
+  font: 17px/1.45 var(--f-ui);
+  color: var(--ink);
+  background: #fffdf7;
+  border: 1px solid rgba(150, 113, 42, .55);
+  border-radius: 12px;
+  padding: 12px 14px;
+}
+textarea { resize: vertical; min-height: 220px; }
+input:focus, textarea:focus, .btn:focus-visible, .linkbtn:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.hint { margin-top: 6px; font-size: 16.5px; line-height: 1.4; color: var(--ink-soft); }
+.hint em { color: var(--maroon-700); font-weight: 500; }
+.linkbtn { font: inherit; color: var(--maroon-700); background: none; border: 0; border-bottom: 1px solid var(--gold); cursor: pointer; padding: 0; }
+h2 { margin: 28px 0 8px; font-family: var(--f-caps); font-weight: 500; font-size: 12.5px; letter-spacing: .26em; text-transform: uppercase; color: var(--maroon-700); }
+.out {
+  font: 16px/1.5 var(--f-ui);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  background: #e9f5e1;
+  border: 1px solid #b9d4a8;
+  border-radius: 4px 16px 16px 16px;
+  padding: 14px 16px;
+  color: #1f2a1a;
+}
+.actions { display: grid; gap: 10px; margin-top: 18px; }
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+  padding: 12px 18px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-family: var(--f-caps);
+  font-size: 12.5px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  color: var(--ivory);
+  background: var(--maroon-700);
+}
+.btn--wa { background: #1f8f4e; font-size: 13.5px; min-height: 56px; }
+.btn--line { color: var(--maroon-700); background: transparent; border-color: var(--maroon-700); }
+.btn:active { transform: scale(.98); }
+.status { min-height: 1.5em; margin-top: 12px; text-align: center; color: var(--maroon-700); font-style: italic; }
+@media (min-width: 560px) {
+  body { padding: 40px 20px 60px; }
+  .card { padding: 40px 38px 40px; }
+  .actions { grid-template-columns: 1fr 1fr; }
+  .btn--wa { grid-column: 1 / -1; }
+}
