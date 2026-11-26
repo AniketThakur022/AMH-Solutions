@@ -36,10 +36,11 @@ window.WEDDING = {
   city: "",                       // e.g. "Mumbai" — shown under the date
 
   /* ---------- Main venue (section is hidden while name is "") ---------- */
-  // name and address are exactly as Google Maps gives them for the shared map link
+  // Wording as given by the family. The map link is unchanged; Google Maps labels the spot
+  // with a different locality name, which is deliberately not shown on this card.
   venue: {
     name: "Chawla Greens",
-    address: "Khaira, Chhattisgarh 495006",
+    address: "Mopka Road, Bilaspur, C.G.",
     mapUrl: "https://maps.app.goo.gl/gfQuq8wy382hPCR86"
   },
 
@@ -50,9 +51,9 @@ window.WEDDING = {
      note: a short tagline — reword or set to "" to remove.            */
   events: [
     { icon: "mehndi",   name: "Mehndi",   note: "Henna, music and the colours of celebration.",     date: "2026-12-07", time: "Evening", venue: "At Residence",          mapUrl: "" },
-    { icon: "carnival", name: "Carnival", note: "Fun, games and laughter with family and friends.", date: "2026-12-08", time: "12 PM onwards", venue: "Chawla Greens, Khaira", mapUrl: "https://maps.app.goo.gl/gfQuq8wy382hPCR86" },
-    { icon: "sangeet",  name: "Sangeet",  note: "An evening of song, dance and family.",            date: "2026-12-08", time: "8 PM onwards",  venue: "Chawla Greens, Khaira", mapUrl: "https://maps.app.goo.gl/gfQuq8wy382hPCR86" },
-    { icon: "wedding",  name: "Wedding",  note: "Two families become one.",                         date: "2026-12-09", time: "8 PM onwards",  venue: "Chawla Greens, Khaira", mapUrl: "https://maps.app.goo.gl/gfQuq8wy382hPCR86" }
+    { icon: "carnival", name: "Carnival", note: "Fun, games and laughter with family and friends.", date: "2026-12-08", time: "12 PM onwards", venue: "Chawla Greens, Mopka Road, Bilaspur, C.G.", mapUrl: "https://maps.app.goo.gl/gfQuq8wy382hPCR86" },
+    { icon: "sangeet",  name: "Sangeet",  note: "An evening of song, dance and family.",            date: "2026-12-08", time: "8 PM onwards",  venue: "Chawla Greens, Mopka Road, Bilaspur, C.G.", mapUrl: "https://maps.app.goo.gl/gfQuq8wy382hPCR86" },
+    { icon: "wedding",  name: "Wedding",  note: "Two families become one.",                         date: "2026-12-09", time: "8 PM onwards",  venue: "Chawla Greens, Mopka Road, Bilaspur, C.G.", mapUrl: "https://maps.app.goo.gl/gfQuq8wy382hPCR86" }
   ],
 
   /* ---------- RSVP (button is hidden while whatsapp is "") ----------
@@ -77,7 +78,7 @@ window.WEDDING = {
     "",
     "🗓️ *Wednesday, 9 December 2026 · 8 PM onwards*",
     "Celebrations begin on 7 December",
-    "📍 *Chawla Greens, Khaira, Chhattisgarh*",
+    "📍 *Chawla Greens, Mopka Road, Bilaspur, C.G.*",
     "",
     "💌 Your invitation is here:",
     "{link}",
